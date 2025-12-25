@@ -13,24 +13,7 @@
 $settings_page = get_page_by_path('theme-settings');
 $option_id = $settings_page ? $settings_page->ID : false;
 if (!$option_id) $option_id = get_option('page_on_front'); // Fallback
-
-// Lấy ngôn ngữ hiện tại
-$lang = function_exists('pll_current_language') ? pll_current_language() : 'vi';
-
-// Lấy dữ liệu Text (Có dịch)
-$company_name    = get_field('company_name_' . $lang, $option_id);
-$tax_id          = get_field('tax_id', $option_id); // MST thường không đổi
-$company_address = get_field('company_address_' . $lang, $option_id);
-
-// Fallback
-if (!$company_name)    $company_name = get_field('company_name', $option_id);
-if (!$company_address) $company_address = get_field('company_address', $option_id);
-
-// Lấy dữ liệu Số/Link (Dùng chung)
 $company_phone   = get_field('company_phone', $option_id);
-$company_email   = get_field('company_email', $option_id);
-$social_facebook = get_field('social_facebook', $option_id);
-$social_linkedin = get_field('link_linkedin', $option_id);
 
 ?>
 <!doctype html>
