@@ -1,0 +1,291 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'Gilda Display';
+  src: url('assets/fonts/GildaDisplay-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* 2. Nunito Sans (Variable Font - Hỗ trợ nhiều độ đậm nhạt) */
+@font-face {
+  font-family: 'Nunito Sans';
+  src: url('assets/fonts/NunitoSans-VariableFont.ttf') format('truetype');
+  font-weight: 200 900; /* Variable font hỗ trợ dải weight này */
+  font-style: normal;
+  font-display: swap;
+}
+
+/* 3. Nunito Sans (Italic) */
+@font-face {
+  font-family: 'Nunito Sans';
+  src: url('assets/fonts/NunitoSans-Italic.ttf') format('truetype');
+  font-weight: 200 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+@layer base {
+    * {
+        font-family: 'Nunito Sans', sans-serif;
+    }
+
+    #menu-menu-language li img{
+        width: 20px!important;
+        height: 15px!important;
+    }
+
+    #menu-menu-language li>.active{
+        border-bottom: 2px solid #05654a;
+        padding-bottom: 3px;
+    }
+
+    #mobile-list-item{
+        position: absolute;
+        flex-flow: column;
+        background: #e7dcd0;
+        width: 100%;
+        min-height: 100vw;
+        z-index: 99;
+        top: 72px;
+    }
+    #mobile-list-item li a{
+        padding: 15px;
+        display: block;
+        border-bottom: 1px solid #222;
+        width: 100%;
+    }
+    #mobile-list-item li:last-child a{
+        border: unset;
+    }
+
+    #mobile-list-item li {
+        /* padding:15px; */
+        margin: 0px;
+    }
+    
+    #mobile-list-item li:hover{
+        background: #f3eee7;
+    }
+
+    #footer-menu li{
+        padding-right: 15px;
+    }
+
+    #footer-menu{
+        margin: 35px 0;
+    }
+
+    .footer-arrows{
+        width: 240px;
+    }
+
+    .footer-arrows::after {
+        height: 25em;
+        width: 15.8em;
+    }
+    .footer-arrows::after{
+        content: '';
+        background-image: url(./assets/images/footer_arrows.png);
+        display: block;
+        position: absolute;
+        background-repeat: no-repeat;
+        right: 0;
+        background-size: contain;
+        background-position: right;
+        top: 0;
+    }
+
+    .link.right a {
+        margin-left: auto;
+    }
+
+    .link a {
+        display: block;
+        width: 10em;
+        padding-right: 0.8em;
+        position: relative;
+        border-bottom: #2b2b2b 1px solid;
+    }
+
+    .link a:before {
+        position: absolute;
+        content: "";
+        vertical-align: middle;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        width: 0.4em;
+        height: 0.4em;
+        border-top: 1px solid #0e0e0e;
+        border-right: 1px solid #0e0e0e;
+        -webkit-transform: rotate(45deg);
+        transform: rotate(45deg);
+        pointer-events: none;
+        right: 0.25em;
+        top: -2px;
+    }
+
+    .view-white a{
+        color: #fff;
+    }
+
+    .view-white a{
+        border-color: #fff;
+    }
+
+    .view-white a:before {
+        border-top: 1px solid #fff;
+        border-right: 1px solid #fff;
+    }
+}
+
+.sub-menu{
+    /* display: none;
+    position: absolute;
+    top: 90px;
+     */
+    background: #e6dccf;
+    min-width: 270px;
+    position: absolute;
+    top: 120%; /* Đẩy thấp xuống một chút để tạo hiệu ứng trượt lên */
+    /* left: 0; */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    
+    /* Trạng thái ẩn */
+    opacity: 0;
+    visibility: hidden;
+    
+    /* Hiệu ứng chuyển động */
+    transition: all 0.3s ease-in-out;
+    z-index: 100;
+}
+
+.menu-item-has-children:hover .sub-menu {
+  top: 100%; /* Trượt về đúng vị trí */
+  opacity: 1;
+  visibility: visible;
+}
+
+.sub-menu li{
+    padding: 10px 0;
+}
+
+.sub-menu li:hover{
+    background-color: #fff;
+}
+
+ul.list_arrow li{
+    position: relative;
+}
+
+ul.list_arrow li a:before {
+    position: absolute;
+    content: "";
+    vertical-align: middle;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    width: 0.3em;
+    height: 0.3em;
+    border-top: 1px solid #0e0e0e;
+    border-right: 1px solid #0e0e0e;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+    pointer-events: none;
+    left: 0;
+    top: 0.5em;
+    bottom: auto;
+}
+
+#backToTop{
+    text-align: center;
+    width: 4rem;
+    height: 2.8125rem;
+    padding: 1.5625rem 0 0;
+    background-image: url(./assets/images/icons/go-top.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-size: 86%;
+    background-position: top center;
+    font-size: 14px;
+    white-space: nowrap;
+    -webkit-transition: 0.3s all 
+linear;
+    transition: 0.3s all 
+linear;
+}
+
+/* =========================================
+   CONTACT FORM 7 STYLES (KAILASH THEME)
+   ========================================= */
+
+/* 1. Style cho ô nhập liệu (Input, Select, Textarea) */
+.kailash-input {
+    width: 100%;
+    padding: 0.75rem 1rem; /* Tương đương py-3 px-4 */
+    background-color: #f9fafb; /* bg-gray-50 */
+    border: 1px solid #e5e7eb; /* border-gray-200 */
+    border-radius: 0.5rem; /* rounded-lg */
+    outline: none;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+    color: #374151; /* text-gray-700 */
+    margin-bottom: 1rem
+}
+
+/* Hiệu ứng khi bấm vào (Focus) */
+.kailash-input:focus {
+    background-color: #ffffff;
+    border-color: #125f4b; /* Màu xanh thương hiệu */
+    box-shadow: 0 0 0 1px #125f4b; /* Ring effect */
+}
+
+/* Placeholder color */
+.kailash-input::placeholder {
+    color: #9ca3af;
+}
+
+/* 2. Style cho nút bấm (Submit Button) */
+.kailash-btn {
+    display: inline-block;
+    width: 100%;
+    background-color: #125f4b;
+    color: #ffffff;
+    font-weight: 700; /* Bold */
+    padding: 0.75rem 2.5rem; /* py-3 px-10 */
+    border-radius: 0.5rem; /* rounded-lg */
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    text-transform: none; /* Reset nếu theme có global style */
+}
+
+/* Responsive cho nút bấm (Trên máy tính thì nút nhỏ lại) */
+@media (min-width: 768px) {
+    .kailash-btn {
+        width: auto;
+    }
+}
+
+/* Hiệu ứng Hover nút bấm */
+.kailash-btn:hover {
+    background-color: #0a4535; /* Darker green */
+    transform: translateY(-2px); /* Bay lên nhẹ */
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+/* 3. Fix lỗi Loader của CF7 (Spinner quay quay) */
+.wpcf7-spinner {
+    margin-top: 10px;
+    position: absolute;
+}
+
+.text-red-500 {
+    color: #ef4444; /* Màu đỏ */
+}

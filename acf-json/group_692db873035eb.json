@@ -1,0 +1,490 @@
+{
+    "key": "group_692db873035eb",
+    "title": "People Details VI",
+    "fields": [
+        {
+            "key": "field_692db8739700f",
+            "label": "Họ tên",
+            "name": "ho_ten",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_692dba4097016",
+            "label": "Chức vụ",
+            "name": "position",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "CEO Founder": "CEO Founder",
+                "Cộng Sự": "Cộng Sự",
+                "Cố vấn": "Cố vấn",
+                "Partner": "Partner",
+                "Advisor": "Advisor"
+            },
+            "default_value": [
+                "Cộng Sự"
+            ],
+            "return_format": "label",
+            "multiple": 1,
+            "allow_null": 0,
+            "allow_in_bindings": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": "",
+            "create_options": 0,
+            "save_options": 0
+        },
+        {
+            "key": "field_692dc1628301f",
+            "label": "Lĩnh vực tư vấn",
+            "name": "linh_vuc_phu_trach",
+            "aria-label": "",
+            "type": "post_object",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "experience"
+            ],
+            "post_status": [
+                "publish"
+            ],
+            "taxonomy": [
+                "language:en",
+                "language:vi"
+            ],
+            "return_format": "id",
+            "multiple": 1,
+            "allow_null": 0,
+            "allow_in_bindings": 0,
+            "bidirectional": 0,
+            "ui": 1,
+            "bidirectional_target": []
+        },
+        {
+            "key": "field_692fedbee9564",
+            "label": "Vị Trí Cố Vấn",
+            "name": "vi_tri_co_van",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_692fe4f6ecdea",
+            "label": "Mô tả lĩnh vực tư vấn, chuyên môn thế mạnh",
+            "name": "mo_ta_linh_vuc_tu_van",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "rows": "",
+            "placeholder": "",
+            "new_lines": ""
+        },
+        {
+            "key": "field_692db88597010",
+            "label": "Ảnh đại diện",
+            "name": "anh_dai_dien",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "url",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "allow_in_bindings": 0,
+            "preview_size": "medium"
+        },
+        {
+            "key": "field_692db97b97011",
+            "label": "Ảnh Bìa",
+            "name": "anh_bia",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "url",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "allow_in_bindings": 0,
+            "preview_size": "medium"
+        },
+        {
+            "key": "field_692db9a797012",
+            "label": "Số điện thoại",
+            "name": "phone",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_692db9bc97013",
+            "label": "Email",
+            "name": "email",
+            "aria-label": "",
+            "type": "email",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_692fe439dd06b",
+            "label": "Ngôn ngữ",
+            "name": "ngon_ngu",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "Tiếng Việt: Tiếng Việt": "Tiếng Việt: Tiếng Việt",
+                "Tiếng Anh: Tiếng Anh": "Tiếng Anh: Tiếng Anh",
+                "Tiếng Nhật: Tiếng Nhật": "Tiếng Nhật: Tiếng Nhật",
+                "Tiếng Pháp: Tiếng Pháp": "Tiếng Pháp: Tiếng Pháp",
+                "Tiếng Nga: Tiếng Nga": "Tiếng Nga: Tiếng Nga",
+                "Tiếng Trung: Tiếng Trung": "Tiếng Trung: Tiếng Trung",
+                "Tiếng Thái: Tiếng Thái": "Tiếng Thái: Tiếng Thái",
+                "Vietnamese: Vietnamese": "Vietnamese: Vietnamese",
+                "English: English": "English: English",
+                "Japanese: Japanese": "Japanese: Japanese",
+                "French: French": "French: French",
+                "Russian: Russian": "Russian: Russian",
+                "Chinese: Chinese": "Chinese: Chinese",
+                "Thai: Thai": "Thai: Thai"
+            },
+            "default_value": [
+                "Tiếng Việt: Tiếng Việt"
+            ],
+            "return_format": "label",
+            "multiple": 1,
+            "allow_null": 0,
+            "allow_in_bindings": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": "",
+            "create_options": 0,
+            "save_options": 0
+        },
+        {
+            "key": "field_692fedf5e9565",
+            "label": "Địa điểm làm việc",
+            "name": "dia_diem_lam_viec",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "TP. Hồ Chí Minh": "TP. Hồ Chí Minh",
+                "Hà Nội": "Hà Nội",
+                "TP. Huế": "TP. Huế",
+                "TP. Đà Nẵng": "TP. Đà Nẵng",
+                "Ho Chi Minh": "Ho Chi Minh",
+                "Ha Noi": "Ha Noi",
+                "Hue": "Hue",
+                "Da Nang": "Da Nang"
+            },
+            "default_value": [
+                "TP. Hồ Chí Minh"
+            ],
+            "return_format": "label",
+            "multiple": 1,
+            "allow_null": 0,
+            "allow_in_bindings": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": "",
+            "create_options": 0,
+            "save_options": 0
+        },
+        {
+            "key": "field_692db9c697014",
+            "label": "Link linkedIn",
+            "name": "link_linkedin",
+            "aria-label": "",
+            "type": "url",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "allow_in_bindings": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_692db9f397015",
+            "label": "Link Facebook",
+            "name": "link_facebook",
+            "aria-label": "",
+            "type": "url",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "allow_in_bindings": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_692dbdc6c2087",
+            "label": "Mô tả ngắn về bản thân",
+            "name": "mo_ta_ngan",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "rows": "",
+            "placeholder": "",
+            "new_lines": ""
+        },
+        {
+            "key": "field_692dbdffc2088",
+            "label": "Học vấn",
+            "name": "hoc_van",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "rows": "",
+            "placeholder": "",
+            "new_lines": ""
+        },
+        {
+            "key": "field_692fe36ba2599",
+            "label": "Tổ chức -  Công ty đang tham gia",
+            "name": "cong_viec_hien_tai",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "rows": "",
+            "placeholder": "",
+            "new_lines": ""
+        },
+        {
+            "key": "field_692fe65f02120",
+            "label": "Tổ chức đã từng làm việc - Chức vụ chuyên môn",
+            "name": "company_worked",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "rows": "",
+            "placeholder": "",
+            "new_lines": ""
+        },
+        {
+            "key": "field_692dbea3c2089",
+            "label": "Dự án đã từng tham gia",
+            "name": "kinh_nghiem",
+            "aria-label": "",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "allow_in_bindings": 0,
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "delay": 0
+        },
+        {
+            "key": "field_692fe546f8f01",
+            "label": "Bài viết\/ công trình NCKH đã xuất bản",
+            "name": "cong_trinh_nckh",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "rows": "",
+            "placeholder": "",
+            "new_lines": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "people"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "display_title": "",
+    "modified": 1764864998
+}
