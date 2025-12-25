@@ -66,18 +66,18 @@ if ( !empty($keyword) ) {
 // Khởi tạo meta_query cơ bản: Logic là AND (để kết hợp với bộ lọc experience nếu có)
 $meta_query = array('relation' => 'AND');
 
-// [LOGIC SẮP XẾP]: Lấy cả bài CÓ 'sap_xep' và KHÔNG CÓ 'sap_xep'
+// [LOGIC SẮP XẾP]: Lấy cả bài CÓ 'order_by' và KHÔNG CÓ 'order_by'
 $meta_query[] = array(
     'relation' => 'OR',
-    // Mệnh đề 1: Có tồn tại key 'sap_xep' (Đặt tên là 'clause_co_gia_tri')
+    // Mệnh đề 1: Có tồn tại key 'order_by' (Đặt tên là 'clause_co_gia_tri')
     'clause_co_gia_tri' => array(
-        'key'     => 'sap_xep',
+        'key'     => 'order_by',
         'compare' => 'EXISTS',
         'type'    => 'NUMERIC'
     ),
-    // Mệnh đề 2: Không tồn tại key 'sap_xep' (Đặt tên là 'clause_khong_gia_tri')
+    // Mệnh đề 2: Không tồn tại key 'order_by' (Đặt tên là 'clause_khong_gia_tri')
     'clause_khong_gia_tri' => array(
-        'key'     => 'sap_xep',
+        'key'     => 'order_by',
         'compare' => 'NOT EXISTS'
     ),
 );
