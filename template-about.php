@@ -167,7 +167,8 @@ if ($company_address) {
             $ceo_args = array(
                 'post_type'      => 'people',
                 'posts_per_page' => -1,
-                'orderby'        => 'menu_order',
+                'meta_key'       => 'sap_xep',
+                'orderby'        => 'meta_value_num',
                 'order'          => 'ASC',
                 'meta_query'     => array(
                     'relation' => 'OR',
