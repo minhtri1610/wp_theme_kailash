@@ -62,36 +62,59 @@ if ( !empty($keyword) ) {
 
 // 3. TẠO QUERY CHÍNH (MAIN QUERY)
 // -----------------------------------------------------------
+
+// Khởi tạo meta_query cơ bản: Logic là AND (để kết hợp với bộ lọc experience nếu có)
+$meta_query = array('relation' => 'AND');
+
+// [LOGIC SẮP XẾP]: Lấy cả bài CÓ 'sap_xep' và KHÔNG CÓ 'sap_xep'
+$meta_query[] = array(
+    'relation' => 'OR',
+    // Mệnh đề 1: Có tồn tại key 'sap_xep' (Đặt tên là 'clause_co_gia_tri')
+    'clause_co_gia_tri' => array(
+        'key'     => 'sap_xep',
+        'compare' => 'EXISTS',
+        'type'    => 'NUMERIC'
+    ),
+    // Mệnh đề 2: Không tồn tại key 'sap_xep' (Đặt tên là 'clause_khong_gia_tri')
+    'clause_khong_gia_tri' => array(
+        'key'     => 'sap_xep',
+        'compare' => 'NOT EXISTS'
+    ),
+);
+
+// [LOGIC BỘ LỌC]: Nếu có chọn Lĩnh vực (Experience) thì thêm điều kiện vào
+if ( !empty($experience_filter) ) {
+    $meta_query[] = array(
+        'key'     => 'assigned_experience_parent',
+        'value'   => '"' . $experience_filter . '"',
+        'compare' => 'LIKE'
+    );
+}
+
+// Cấu hình Query
 $args = array(
     'post_type'      => 'people',
     'posts_per_page' => 12, 
     'paged'          => $paged,
-    'orderby'        => 'menu_order',
-    'order'          => 'ASC',
     'post_status'    => 'publish',
-    'meta_key'       => 'order_by',        // <--- Thay 'sap_xep' bằng tên Field Name ACF của bạn
-    'orderby'        => 'meta_value_num', // Sắp xếp theo giá trị số của field trên
-    'order'          => 'ASC',
+    
+    // Đưa meta_query đã build ở trên vào
+    'meta_query'     => $meta_query,
+    
+    // Sắp xếp dựa trên tên mệnh đề (clause name)
+    'orderby'        => array(
+        'clause_co_gia_tri' => 'ASC', // Ưu tiên sort theo số
+        'date'              => 'DESC' // Những bài ko có số (hoặc số bằng nhau) thì sort theo ngày
+    ),
 );
 
 // Áp dụng kết quả tìm kiếm (Nếu có keyword)
 if ( $has_search ) {
     if ( !empty($final_post_ids) ) {
-        $args['post__in'] = $final_post_ids; // Chỉ lấy các bài tìm thấy
+        $args['post__in'] = $final_post_ids;
     } else {
-        $args['post__in'] = array(0); // Không tìm thấy gì -> Gán ID = 0 để trả về rỗng
+        $args['post__in'] = array(0);
     }
-}
-
-// Áp dụng bộ lọc Lĩnh vực (Experience) - Logic AND
-if ( !empty($experience_filter) ) {
-    $args['meta_query'] = array(
-        array(
-            'key'     => 'assigned_experience_parent',
-            'value'   => '"' . $experience_filter . '"',
-            'compare' => 'LIKE'
-        )
-    );
 }
 
 // Thực hiện Query
