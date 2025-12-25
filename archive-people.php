@@ -69,6 +69,9 @@ $args = array(
     'orderby'        => 'menu_order',
     'order'          => 'ASC',
     'post_status'    => 'publish',
+    'meta_key'       => 'sap_xep',        // <--- Thay 'sap_xep' bằng tên Field Name ACF của bạn
+    'orderby'        => 'order_by', // Sắp xếp theo giá trị số của field trên
+    'order'          => 'ASC',
 );
 
 // Áp dụng kết quả tìm kiếm (Nếu có keyword)
