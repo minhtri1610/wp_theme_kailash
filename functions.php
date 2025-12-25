@@ -229,33 +229,46 @@ function my_custom_login_logo() {
 add_action( 'login_enqueue_scripts', 'my_custom_login_logo' );
 
 /**
- * Hook xử lý sắp xếp: Đưa giá trị NULL xuống cuối khi sort ASC
+ * Hook tùy chỉnh sắp xếp: Có số hiện trước (Tăng dần), Null/Rỗng hiện sau
  */
-add_filter( 'posts_orderby', 'kailash_sort_nulls_last', 10, 2 );
+add_filter( 'posts_clauses', 'kailash_advanced_sort_logic', 10, 2 );
 
-function kailash_sort_nulls_last( $orderby, $query ) {
-    // 1. Chỉ chạy nếu có tham số 'sort_nulls_last' trong args
-    if ( ! $query->get( 'sort_nulls_last' ) ) {
-        return $orderby;
+function kailash_advanced_sort_logic( $clauses, $query ) {
+    // 1. Chỉ chạy khi có tham số 'kailash_custom_sort'
+    if ( ! $query->get( 'kailash_custom_sort' ) ) {
+        return $clauses;
     }
 
-    // 2. Lấy thông tin các mệnh đề meta_query
-    // Để tìm xem bảng chứa 'sap_xep' (clause_co_gia_tri) đang có tên alias là gì (ví dụ mt1, mt2...)
-    $clauses = $query->meta_query->get_clauses();
+    global $wpdb;
 
-    // Tìm alias của mệnh đề 'clause_co_gia_tri'
-    if ( isset( $clauses['clause_co_gia_tri']['alias'] ) ) {
-        $alias = $clauses['clause_co_gia_tri']['alias'];
+    // 2. Tìm Alias (Tên bảng phụ) của meta_key 'sap_xep'
+    // WordPress thường đặt tên là mt1, mt2... Đoạn này dùng Regex để tìm chính xác bảng nào join với key 'sap_xep'
+    preg_match( '/(\w+)\.meta_key\s*=\s*[\'"]sap_xep[\'"]/', $clauses['join'], $matches );
+    
+    $alias = isset($matches[1]) ? $matches[1] : false;
 
-        // 3. Chèn logic SQL: "Nếu NULL thì tính là 1, có giá trị thì tính là 0"
-        // Khi sort ASC: 0 sẽ đứng trước 1 -> Tức là CÓ GIÁ TRỊ đứng trước NULL
-        $custom_sql = "CASE WHEN {$alias}.meta_value IS NULL THEN 1 ELSE 0 END, ";
+    // Nếu tìm thấy bảng meta (Tức là query có join bảng postmeta)
+    if ( $alias ) {
+        // 3. Viết lại câu lệnh ORDER BY
         
-        // Nối vào chuỗi orderby mặc định
-        return $custom_sql . $orderby;
+        // Logic SQL:
+        // - CASE WHEN: Nếu giá trị NULL hoặc Rỗng ('') -> Gán là 1. Nếu có số -> Gán là 0.
+        // - Sort ASC cái nhóm trên: Nhóm 0 (Có số) sẽ lên đầu. Nhóm 1 (Rỗng) xuống cuối.
+        // - Sau đó sort tiếp giá trị số (meta_value+0) ASC.
+        // - Cuối cùng sort theo ngày đăng (post_date) DESC cho đẹp.
+        
+        $clauses['orderby'] = " 
+            CASE 
+                WHEN {$alias}.meta_value IS NULL THEN 1 
+                WHEN {$alias}.meta_value = '' THEN 1 
+                ELSE 0 
+            END ASC, 
+            ({$alias}.meta_value+0) ASC, 
+            {$wpdb->posts}.post_date DESC
+        ";
     }
 
-    return $orderby;
+    return $clauses;
 }
 
 /**

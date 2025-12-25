@@ -63,31 +63,29 @@ if ( !empty($keyword) ) {
 // 3. TẠO QUERY CHÍNH (MAIN QUERY)
 // -----------------------------------------------------------
 
-// Khởi tạo meta_query cơ bản: Logic là AND (để kết hợp với bộ lọc experience nếu có)
-$meta_query = array('relation' => 'AND');
-
-// [LOGIC SẮP XẾP]: Lấy cả bài CÓ 'order_by' và KHÔNG CÓ 'order_by'
-$meta_query[] = array(
+$meta_query = array(
     'relation' => 'OR',
-    // Mệnh đề 1: Có tồn tại key 'order_by' (Đặt tên là 'clause_co_gia_tri')
-    'clause_co_gia_tri' => array(
-        'key'     => 'order_by',
-        'compare' => 'EXISTS',
-        'type'    => 'NUMERIC'
+    array(
+        'key'     => 'sap_xep',
+        'compare' => 'EXISTS'
     ),
-    // Mệnh đề 2: Không tồn tại key 'order_by' (Đặt tên là 'clause_khong_gia_tri')
-    'clause_khong_gia_tri' => array(
-        'key'     => 'order_by',
+    array(
+        'key'     => 'sap_xep',
         'compare' => 'NOT EXISTS'
     ),
 );
 
-// [LOGIC BỘ LỌC]: Nếu có chọn Lĩnh vực (Experience) thì thêm điều kiện vào
+// Nếu có lọc theo lĩnh vực thì thêm vào (Logic code cũ của bạn)
 if ( !empty($experience_filter) ) {
-    $meta_query[] = array(
-        'key'     => 'assigned_experience_parent',
-        'value'   => '"' . $experience_filter . '"',
-        'compare' => 'LIKE'
+    $temp_meta_query = $meta_query;
+    $meta_query = array(
+        'relation' => 'AND',
+        array(
+            'key'     => 'assigned_experience_parent',
+            'value'   => '"' . $experience_filter . '"',
+            'compare' => 'LIKE'
+        ),
+        $temp_meta_query
     );
 }
 
@@ -96,27 +94,21 @@ $args = array(
     'posts_per_page' => 12, 
     'paged'          => $paged,
     'post_status'    => 'publish',
-    'meta_query'     => $meta_query, // Giữ nguyên meta_query đã build ở bước trước
+    'meta_query'     => $meta_query,
     
-    // Thêm dòng này để làm cờ hiệu cho hook
-    'sort_nulls_last' => true, 
+    // QUAN TRỌNG: Đặt tham số này để kích hoạt Hook
+    'kailash_custom_sort' => true, 
     
-    'orderby'        => array(
-        'clause_co_gia_tri' => 'ASC', // Sắp xếp tăng dần: 1, 2, 3...
-        'date'              => 'DESC' // Các bài còn lại xếp theo ngày mới nhất
-    ),
+    // Orderby mặc định để giữ chỗ, hook sẽ ghi đè sau
+    'orderby'        => 'date', 
+    'order'          => 'DESC'
 );
 
-// Áp dụng kết quả tìm kiếm (Nếu có keyword)
+// Áp dụng tìm kiếm keyword (Giữ nguyên code cũ của bạn)
 if ( $has_search ) {
-    if ( !empty($final_post_ids) ) {
-        $args['post__in'] = $final_post_ids;
-    } else {
-        $args['post__in'] = array(0);
-    }
+    $args['post__in'] = !empty($final_post_ids) ? $final_post_ids : array(0);
 }
 
-// Thực hiện Query
 $the_query = new WP_Query( $args );
 
 // 4. TÍNH TOÁN SỐ LIỆU (Result Count)
