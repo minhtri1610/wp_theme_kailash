@@ -103,7 +103,7 @@ $args = array(
     
     // Sắp xếp dựa trên tên mệnh đề (clause name)
     'orderby'        => array(
-        'clause_co_gia_tri' => 'DESC', // Ưu tiên sort theo số
+        'clause_co_gia_tri' => 'ASC', // Ưu tiên sort theo số
         'date'              => 'ASC' // Những bài ko có số (hoặc số bằng nhau) thì sort theo ngày
     ),
 );
