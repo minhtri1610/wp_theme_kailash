@@ -91,20 +91,19 @@ if ( !empty($experience_filter) ) {
     );
 }
 
-// Cấu hình Query
 $args = array(
     'post_type'      => 'people',
     'posts_per_page' => 12, 
     'paged'          => $paged,
     'post_status'    => 'publish',
+    'meta_query'     => $meta_query, // Giữ nguyên meta_query đã build ở bước trước
     
-    // Đưa meta_query đã build ở trên vào
-    'meta_query'     => $meta_query,
+    // Thêm dòng này để làm cờ hiệu cho hook
+    'sort_nulls_last' => true, 
     
-    // Sắp xếp dựa trên tên mệnh đề (clause name)
     'orderby'        => array(
-        'clause_co_gia_tri' => 'ASC', // Ưu tiên sort theo số
-        'date'              => 'ASC' // Những bài ko có số (hoặc số bằng nhau) thì sort theo ngày
+        'clause_co_gia_tri' => 'ASC', // Sắp xếp tăng dần: 1, 2, 3...
+        'date'              => 'DESC' // Các bài còn lại xếp theo ngày mới nhất
     ),
 );
 

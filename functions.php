@@ -229,6 +229,36 @@ function my_custom_login_logo() {
 add_action( 'login_enqueue_scripts', 'my_custom_login_logo' );
 
 /**
+ * Hook xử lý sắp xếp: Đưa giá trị NULL xuống cuối khi sort ASC
+ */
+add_filter( 'posts_orderby', 'kailash_sort_nulls_last', 10, 2 );
+
+function kailash_sort_nulls_last( $orderby, $query ) {
+    // 1. Chỉ chạy nếu có tham số 'sort_nulls_last' trong args
+    if ( ! $query->get( 'sort_nulls_last' ) ) {
+        return $orderby;
+    }
+
+    // 2. Lấy thông tin các mệnh đề meta_query
+    // Để tìm xem bảng chứa 'sap_xep' (clause_co_gia_tri) đang có tên alias là gì (ví dụ mt1, mt2...)
+    $clauses = $query->meta_query->get_clauses();
+
+    // Tìm alias của mệnh đề 'clause_co_gia_tri'
+    if ( isset( $clauses['clause_co_gia_tri']['alias'] ) ) {
+        $alias = $clauses['clause_co_gia_tri']['alias'];
+
+        // 3. Chèn logic SQL: "Nếu NULL thì tính là 1, có giá trị thì tính là 0"
+        // Khi sort ASC: 0 sẽ đứng trước 1 -> Tức là CÓ GIÁ TRỊ đứng trước NULL
+        $custom_sql = "CASE WHEN {$alias}.meta_value IS NULL THEN 1 ELSE 0 END, ";
+        
+        // Nối vào chuỗi orderby mặc định
+        return $custom_sql . $orderby;
+    }
+
+    return $orderby;
+}
+
+/**
  * 2. Đổi Link khi click vào Logo (Trỏ về trang chủ thay vì WordPress.org)
  */
 function my_login_logo_url() {
