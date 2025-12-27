@@ -81,6 +81,6 @@ add_action('init', function() {
     pll_register_string('Find not found', 'Không tìm thấy', $group);
     pll_register_string('View all people', 'Xem tất cả', $group_home);
 
-    pll_register_string('Contact Us', 'Liên hệ chúng tôi', $group_button);
+    pll_register_string('Contact Us', 'Liên hệ chúng tôi', $group_home);
 
 });
