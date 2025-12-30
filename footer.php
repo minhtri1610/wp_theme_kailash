@@ -16,18 +16,6 @@ if (!$option_id) $option_id = get_option('page_on_front'); // Fallback
 // Lấy ngôn ngữ hiện tại
 $lang = function_exists('pll_current_language') ? pll_current_language() : 'vi';
 
-// Lấy dữ liệu Text (Có dịch)
-$company_name    = get_field('company_name_' . $lang, $option_id);
-$tax_id          = get_field('tax_id', $option_id); // MST thường không đổi
-$company_address = get_field('company_address_' . $lang, $option_id);
-
-// Fallback
-if (!$company_name)    $company_name = get_field('company_name', $option_id);
-if (!$company_address) $company_address = get_field('company_address', $option_id);
-
-// Lấy dữ liệu Số/Link (Dùng chung)
-$company_phone   = get_field('company_phone', $option_id);
-$company_email   = get_field('company_email', $option_id);
 $social_facebook = get_field('social_facebook', $option_id);
 $social_linkedin = get_field('link_linkedin', $option_id);
 ?>
@@ -44,51 +32,7 @@ $social_linkedin = get_field('link_linkedin', $option_id);
 					));
 				?>
 			</div>
-			<div class="footer-info my-4">
-				<h2 class="font-bold text-3xl text-white mb-2">
-                    <?php echo $company_name ? esc_html($company_name) : 'Kailash'; ?>
-                </h2>
-				<p class="text-white text-base pb-5">Investment & Corporate Governance Counsel</p>
-				<?php if($tax_id): ?>
-                <p class="text-[#dfdfdf] text-base pb-3">
-                    <i class="fa-solid fa-barcode w-6 text-center"></i> 
-                    <?php pll_e('Mã số thuế'); ?>: 
-                    <span class="font-medium"><?php echo esc_html($tax_id); ?></span>
-                </p>
-				<?php endif; ?>
-				<!-- Liên hệ & Email -->
-                <p class="text-[#dfdfdf] text-base pb-3 flex flex-wrap gap-y-2">
-                    <?php if($company_phone): ?>
-                    <span class="mr-4">
-                        <i class="fa-solid fa-mobile-screen-button w-6 text-center"></i> 
-                        <?php pll_e('Liên hệ'); ?>: 
-                        <a href="tel:<?php echo esc_attr($company_phone); ?>" class="underline underline-offset-1 hover:text-white transition-colors">
-                            <?php echo esc_html($company_phone); ?>
-                        </a>
-                    </span>
-                    <?php endif; ?>
-
-                    <?php if($company_email): ?>
-                    <span>
-                        <span class="hidden md:inline">|</span> 
-                        <i class="fa-regular fa-envelope w-6 text-center ml-0 md:ml-2"></i> 
-                        <?php pll_e('Email'); ?>: 
-                        <a href="mailto:<?php echo esc_attr($company_email); ?>" class="underline underline-offset-1 hover:text-white transition-colors">
-                            <?php echo esc_html($company_email); ?>
-                        </a>
-                    </span>
-                    <?php endif; ?>
-                </p>
-				<!-- Địa chỉ -->
-                <?php if($company_address): ?>
-                <p class="text-[#dfdfdf] text-base pb-3">
-                    <i class="fa-regular fa-building w-6 text-center"></i> 
-                    <?php pll_e('Địa chỉ'); ?>: 
-                    <?php echo esc_html($company_address); ?>
-                </p>
-                <?php endif; ?>
-			</div>
-			<div class="list-social-media">
+			<div class="list-social-media mt-3">
 				<ul class="flex flex-row">
 					<?php if($social_facebook): ?>
                     <li class="mr-4">
@@ -107,8 +51,57 @@ $social_linkedin = get_field('link_linkedin', $option_id);
                     <?php endif; ?>
 				</ul>
 			</div>
+
+			<div class="footer-info my-10">
+
+				<div class="grid grid-cols-5 gap-4 mb-5">
+					<div class="">
+						<a class="text-white text-sm hover:text-slate-300" href=""><?php pll_e('Chính sách trang web'); ?></a>
+					</div>
+					<div class="col-span-2">
+						<a class="text-white text-sm hover:text-slate-300" href=""><?php pll_e('Chính sách cơ bản về bảo mật thông tin'); ?></a>
+					</div>
+				</div>
+
+				<div class="grid grid-cols-5 gap-4 mb-5">
+					<div class="">
+						<a class="text-white text-sm hover:text-slate-300" href=""><?php pll_e('Tuyên bố miễn trừ trách nhiệm'); ?></a>
+					</div>
+					<div class="col-span-2">
+						<a class="text-white text-sm hover:text-slate-300" href=""><?php pll_e('Chính sách bảo mật dữ liệu dành cho chủ thể dữ liệu'); ?></a>
+					</div>
+				</div>
+
+				<div class="grid grid-cols-5 gap-4 mb-5">
+					<div class="">
+						<a class="text-white text-sm hover:text-slate-300" href=""><?php pll_e('Chính sách cookie'); ?></a>
+					</div>
+					<div class="col-span-2">
+						<a class="text-white text-sm hover:text-slate-300" href=""><?php pll_e('Mã số định danh cá nhân hoặc mã số định danh doanh nghiệp của công ty.'); ?></a>
+					</div>
+				</div>
+
+				<div class="grid grid-cols-5 gap-4 mb-5">
+					<div class="">
+						<a class="text-white text-sm hover:text-slate-300" href=""><?php pll_e('Thông tin pháp lý'); ?></a>
+					</div>
+					<div class="col-span-2">
+						<a class="text-white text-sm hover:text-slate-300" href=""><?php pll_e('Cách tiếp cận của công ty đối với xung đột lợi ích'); ?></a>
+					</div>
+				</div>
+
+				<div class="grid grid-cols-5 gap-4 mb-5">
+					<div class="">
+						<a class="text-white text-sm hover:text-slate-300" href=""><?php pll_e('Chính sách AI của doanh nghiệp'); ?></a>
+					</div>
+					<div class="col-span-2">
+						<a class="text-white text-sm hover:text-slate-300" href=""><?php pll_e('Chính sách bảo vệ thông tin cá nhân'); ?></a>
+					</div>
+				</div>
+
+			</div>
 			<div class="copyright text-center pb-3">
-				<p class="text-[#dfdfdf] text-base">© 2025 <?php echo $company_name ? esc_html($company_name) : 'Kailash'; ?>. All rights reserved.</p>
+				<p class="text-[#dfdfdf] text-sm">© 2025 <?php echo $company_name ? esc_html($company_name) : 'Kailash'; ?>. All rights reserved.</p>
 			</div>
 		</div>
 		<div class="footer-arrows">

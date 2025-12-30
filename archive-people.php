@@ -144,7 +144,7 @@ if ($total_posts == 0) $start_result = 0;
                     <div class="el-search flex align-center items-center w-[80%] relative">
                         <input type="text" 
                             name="keyword" 
-                            value="<?php echo esc_attr($search_keyword); ?>" class="w-full px-4 py-4 bg-[#414141] text-white text-base outline-none" placeholder="<?php pll_e('s_placeholder_tim_kiem'); ?>">
+                            value="<?php echo esc_attr($keyword); ?>" class="w-full px-4 py-4 bg-[#414141] text-white text-base outline-none" placeholder="<?php pll_e('s_placeholder_tim_kiem'); ?>">
                         <button type="submit" class="text-white absolute right-4">
                             <svg 
                             xmlns="http://www.w3.org/2000/svg" 
