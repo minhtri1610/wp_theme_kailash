@@ -16,6 +16,8 @@ if (!$option_id) $option_id = get_option('page_on_front'); // Fallback
 // Lấy ngôn ngữ hiện tại
 $lang = function_exists('pll_current_language') ? pll_current_language() : 'vi';
 
+$company_name = get_field('company_name', $option_id);
+
 $social_facebook = get_field('social_facebook', $option_id);
 $social_linkedin = get_field('link_linkedin', $option_id);
 ?>

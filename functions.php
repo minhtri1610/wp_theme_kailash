@@ -143,7 +143,7 @@ function kailash_scripts() {
 	wp_enqueue_style( 'kailash-style', get_stylesheet_uri(), array(), _S_VERSION );
 	wp_style_add_data( 'kailash-style', 'rtl', 'replace' );
 
-	wp_enqueue_style( 'kailash-tailwind', get_template_directory_uri() . '/style.css', array('kailash-style'), '1.0.0' );
+	wp_enqueue_style( 'kailash-tailwind', get_template_directory_uri() . '/style.css', array('kailash-style'), '1.0.2' );
 
 	wp_enqueue_script( 'kailash-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
     wp_enqueue_script('menu-js', get_template_directory_uri() . '/assets/js/menu.js', [], false, true);
