@@ -58,46 +58,46 @@ $social_linkedin = get_field('link_linkedin', $option_id);
 
 				<div class="grid grid-cols-5 gap-4 mb-5">
 					<div class="">
-						<a class="text-white text-sm hover:text-slate-300" href=""><?php pll_e('Chính sách trang web'); ?></a>
+						<a class="text-white text-sm hover:text-slate-300" href="<?php echo site_url('/chinh-sach-trang-web'); ?>"><?php pll_e('Chính sách trang web'); ?></a>
 					</div>
 					<div class="col-span-2">
-						<a class="text-white text-sm hover:text-slate-300" href=""><?php pll_e('Chính sách cơ bản về bảo mật thông tin'); ?></a>
+						<a class="text-white text-sm hover:text-slate-300" href="<?php echo site_url('/chinh-sach-co-ban-ve-bao-mat-thong-tin'); ?>"><?php pll_e('Chính sách cơ bản về bảo mật thông tin'); ?></a>
 					</div>
 				</div>
 
 				<div class="grid grid-cols-5 gap-4 mb-5">
 					<div class="">
-						<a class="text-white text-sm hover:text-slate-300" href=""><?php pll_e('Tuyên bố miễn trừ trách nhiệm'); ?></a>
+						<a class="text-white text-sm hover:text-slate-300" href="<?php echo site_url('/tuyen-bo-mien-tri-trach-nhiem'); ?>"><?php pll_e('Tuyên bố miễn trừ trách nhiệm'); ?></a>
 					</div>
 					<div class="col-span-2">
-						<a class="text-white text-sm hover:text-slate-300" href=""><?php pll_e('Chính sách bảo mật dữ liệu dành cho chủ thể dữ liệu'); ?></a>
+						<a class="text-white text-sm hover:text-slate-300" href="<?php echo site_url('/chinh-sach-bao-mat-danh-cho-chu-the-du-lieu'); ?>"><?php pll_e('Chính sách bảo mật dữ liệu dành cho chủ thể dữ liệu'); ?></a>
 					</div>
 				</div>
 
 				<div class="grid grid-cols-5 gap-4 mb-5">
 					<div class="">
-						<a class="text-white text-sm hover:text-slate-300" href=""><?php pll_e('Chính sách cookie'); ?></a>
+						<a class="text-white text-sm hover:text-slate-300" href="<?php echo site_url('/chinh-sach-cookie'); ?>"><?php pll_e('Chính sách cookie'); ?></a>
 					</div>
 					<div class="col-span-2">
-						<a class="text-white text-sm hover:text-slate-300" href=""><?php pll_e('Mã số định danh cá nhân hoặc mã số định danh doanh nghiệp của công ty.'); ?></a>
+						<a class="text-white text-sm hover:text-slate-300" href="<?php echo site_url('/ma-so-dinh-danh-canhan-ma-so-dinh-danh-doanh-nghiep'); ?>"><?php pll_e('Mã số định danh cá nhân hoặc mã số định danh doanh nghiệp của công ty.'); ?></a>
 					</div>
 				</div>
 
 				<div class="grid grid-cols-5 gap-4 mb-5">
 					<div class="">
-						<a class="text-white text-sm hover:text-slate-300" href=""><?php pll_e('Thông tin pháp lý'); ?></a>
+						<a class="text-white text-sm hover:text-slate-300" href="<?php echo site_url('/thong-tin-phap-ly'); ?>"><?php pll_e('Thông tin pháp lý'); ?></a>
 					</div>
 					<div class="col-span-2">
-						<a class="text-white text-sm hover:text-slate-300" href=""><?php pll_e('Cách tiếp cận của công ty đối với xung đột lợi ích'); ?></a>
+						<a class="text-white text-sm hover:text-slate-300" href="<?php echo site_url('/cach-tiep-can-cong-ty-doi-vi-xung-dot-loi-ich'); ?>"><?php pll_e('Cách tiếp cận của công ty đối với xung đột lợi ích'); ?></a>
 					</div>
 				</div>
 
 				<div class="grid grid-cols-5 gap-4 mb-5">
 					<div class="">
-						<a class="text-white text-sm hover:text-slate-300" href=""><?php pll_e('Chính sách AI của doanh nghiệp'); ?></a>
+						<a class="text-white text-sm hover:text-slate-300" href="<?php echo site_url('/chinh-sach-ai-cua-doanh-nghiep'); ?>"><?php pll_e('Chính sách AI của doanh nghiệp'); ?></a>
 					</div>
 					<div class="col-span-2">
-						<a class="text-white text-sm hover:text-slate-300" href=""><?php pll_e('Chính sách bảo vệ thông tin cá nhân'); ?></a>
+						<a class="text-white text-sm hover:text-slate-300" href="<?php echo site_url('/chinh-sach-bao-ve-thong-tin-ca-nhan'); ?>"><?php pll_e('Chính sách bảo vệ thông tin cá nhân'); ?></a>
 					</div>
 				</div>
 

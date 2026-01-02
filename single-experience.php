@@ -88,14 +88,56 @@ $is_level_1 = ($post_parent_id == 0);
                         <?php } ?>
                     </div>
 
-                    <div class="text-left mx-auto my-12">
-                        <h2 class="text-2xl font-bold mb-8 uppercase tracking-wide text-[#aa7d59] border-b border-b-[#dcdcdc] pb-2.5">
-                            <?php pll_e('Dự án gần đây'); ?>
-                        </h2>
-                        <div class="text-xl text-gray-600 leading-relaxed">
-                            <p class="text-center text-gray-500">Đang cập nhật danh sách dự án.</p>
+                <!-- [CẬP NHẬT] DỰ ÁN GẦN ĐÂY (Recent Work) CHO LEVEL 1 -->
+                <div class="text-left mx-auto mb-12">
+                    <h2 class="text-2xl font-bold my-8 uppercase tracking-wide text-[#aa7d59] border-b border-b-[#dcdcdc] pb-2.5">
+                        <?php pll_e('Dự án gần đây'); ?>
+                    </h2>
+                    
+                    <?php
+                    $project_args_l1 = array(
+                        'post_type'      => 'recent_work',
+                        'posts_per_page' => 5, 
+                        'meta_query'     => array(
+                            array(
+                                'key'     => 'related_experience',
+                                'value'   => '"' . $current_id . '"',
+                                'compare' => 'LIKE'
+                            )
+                        )
+                    );
+                    $project_query_l1 = new WP_Query($project_args_l1);
+
+                    if ($project_query_l1->have_posts()) : ?>
+                        <div class="list-rencent-projects space-y-4">
+                            <?php while ($project_query_l1->have_posts()) : $project_query_l1->the_post(); 
+                                $p_start = get_field('project_start_date');
+                                $p_end   = get_field('project_end_date');
+                                $date_display = $p_start ? $p_start : '';
+                                if($p_end) $date_display .= ' - ' . $p_end;
+                            ?>
+                                <div class="project-item border-b border-gray-100 pb-4 last:border-0 last:pb-0">
+                                    <h3 class="text-lg font-bold text-gray-800 hover:text-[#125f4b] transition-colors mb-1">
+                                        <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+                                    </h3>
+                                    <?php if($date_display): ?>
+                                        <div class="text-sm text-gray-500 italic mb-2">
+                                            <i class="fa-regular fa-calendar mr-2"></i><?php echo esc_html($date_display); ?>
+                                        </div>
+                                    <?php endif; ?>
+                                    <div class="text-gray-600 text-sm line-clamp-2">
+                                        <?php echo wp_trim_words(get_the_excerpt(), 30); ?>
+                                    </div>
+                                </div>
+                            <?php endwhile; ?>
                         </div>
-                    </div>
+                    <?php 
+                    else:
+                        echo '<p class="text-gray-500 italic">' . pll__('Đang cập nhật danh sách dự án.') . '</p>';
+                    endif;
+                    wp_reset_postdata();
+                    ?>
+                </div>
 
                     <!-- 2. DANH SÁCH CỘNG SỰ (PEOPLE) -->
                     <!-- Logic: Tìm People có field 'assigned_experience_parent' chứa ID bài này -->
@@ -135,7 +177,7 @@ $is_level_1 = ($post_parent_id == 0);
                                                     ?>
                                                 </div>
                                                 <h4 class="font-bold text-lg text-gray-900 group-hover:text-[#125f4b] transition"><?php the_title(); ?></h4>
-                                                <div class="text-sm text-gray-500 mt-1 uppercase tracking-wider">Partner</div>
+                                                <div class="text-sm text-gray-500 mt-1 uppercase tracking-wider"><?php the_field('position'); ?></div>
                                             </a>
                                         </div>
                                     <?php endwhile; ?>
@@ -273,15 +315,55 @@ $is_level_1 = ($post_parent_id == 0);
                     </div>
                 </div>
 
+                <!-- [CẬP NHẬT] DỰ ÁN GẦN ĐÂY (Recent Work) CHO LEVEL 1 -->
                 <div class="text-left mx-auto mb-12">
-                    <div class="text-left mx-auto mb-12">
-                        <h2 class="text-2xl font-bold mb-8 uppercase tracking-wide text-[#aa7d59] border-b border-b-[#dcdcdc] pb-2.5">
-                            <?php pll_e('Dự án gần đây'); ?>
-                        </h2>
-                        <div class="list-rencent-projects">
-                            <p class="text-center text-gray-500">Đang cập nhật danh sách dự án.</p>
+                    <h2 class="text-2xl font-bold mb-8 uppercase tracking-wide text-[#aa7d59] border-b border-b-[#dcdcdc] pb-2.5">
+                        <?php pll_e('Dự án gần đây'); ?>
+                    </h2>
+                    
+                    <?php
+                    $project_args_l1 = array(
+                        'post_type'      => 'recent_work',
+                        'posts_per_page' => 5, 
+                        'meta_query'     => array(
+                            array(
+                                'key'     => 'related_experience',
+                                'value'   => '"' . $current_id . '"',
+                                'compare' => 'LIKE'
+                            )
+                        )
+                    );
+                    $project_query_l1 = new WP_Query($project_args_l1);
+
+                    if ($project_query_l1->have_posts()) : ?>
+                        <div class="list-rencent-projects space-y-4">
+                            <?php while ($project_query_l1->have_posts()) : $project_query_l1->the_post(); 
+                                $p_start = get_field('project_start_date');
+                                $p_end   = get_field('project_end_date');
+                                $date_display = $p_start ? $p_start : '';
+                                if($p_end) $date_display .= ' - ' . $p_end;
+                            ?>
+                                <div class="project-item border-b border-gray-100 pb-4 last:border-0 last:pb-0">
+                                    <h3 class="text-lg font-bold text-gray-800 hover:text-[#125f4b] transition-colors mb-1">
+                                        <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+                                    </h3>
+                                    <?php if($date_display): ?>
+                                        <div class="text-sm text-gray-500 italic mb-2">
+                                            <i class="fa-regular fa-calendar mr-2"></i><?php echo esc_html($date_display); ?>
+                                        </div>
+                                    <?php endif; ?>
+                                    <div class="text-gray-600 text-sm line-clamp-2">
+                                        <?php echo wp_trim_words(get_the_excerpt(), 30); ?>
+                                    </div>
+                                </div>
+                            <?php endwhile; ?>
                         </div>
-                    </div>
+                    <?php 
+                    else:
+                        echo '<p class="text-gray-500 italic">' . pll__('Đang cập nhật danh sách dự án.') . '</p>';
+                    endif;
+                    wp_reset_postdata();
+                    ?>
                 </div>
 
             </div>

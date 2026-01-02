@@ -295,6 +295,89 @@ function kailash_change_posts_per_page( $query ) {
 add_action( 'pre_get_posts', 'kailash_change_posts_per_page' );
 
 /**
+ * Thêm Meta Box: Banner Link & Button Text
+ */
+function kailash_add_banner_meta_boxes() {
+    add_meta_box(
+        'banner_options',      // ID
+        'Thông tin Banner',    // Title
+        'kailash_banner_callback', // Callback function
+        'banner',              // Post type
+        'normal',              // Context
+        'high'                 // Priority
+    );
+}
+add_action( 'add_meta_boxes', 'kailash_add_banner_meta_boxes' );
+
+// Hiển thị form nhập liệu
+function kailash_banner_callback( $post ) {
+    // Lấy giá trị đã lưu
+    $banner_link = get_post_meta( $post->ID, '_banner_link', true );
+    $btn_text    = get_post_meta( $post->ID, '_banner_btn_text', true );
+    
+    // Nonce field để bảo mật
+    wp_nonce_field( 'kailash_save_banner_data', 'kailash_banner_nonce' );
+    ?>
+    <p>
+        <label for="banner_link" style="font-weight:bold; display:block; margin-bottom:5px;">Link liên kết:</label>
+        <input type="url" id="banner_link" name="banner_link" value="<?php echo esc_attr( $banner_link ); ?>" class="widefat" placeholder="https://...">
+    </p>
+    <p>
+        <label for="banner_btn_text" style="font-weight:bold; display:block; margin-bottom:5px; margin-top:15px;">Chữ trên nút (Mặc định: View More):</label>
+        <input type="text" id="banner_btn_text" name="banner_btn_text" value="<?php echo esc_attr( $btn_text ); ?>" class="widefat" placeholder="Ví dụ: Xem ngay">
+    </p>
+    <?php
+}
+
+// Lưu dữ liệu
+function kailash_save_banner_meta( $post_id ) {
+    if ( ! isset( $_POST['kailash_banner_nonce'] ) || ! wp_verify_nonce( $_POST['kailash_banner_nonce'], 'kailash_save_banner_data' ) ) return;
+    if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) return;
+    if ( ! current_user_can( 'edit_post', $post_id ) ) return;
+
+    if ( isset( $_POST['banner_link'] ) ) {
+        update_post_meta( $post_id, '_banner_link', sanitize_text_field( $_POST['banner_link'] ) );
+    }
+    if ( isset( $_POST['banner_btn_text'] ) ) {
+        update_post_meta( $post_id, '_banner_btn_text', sanitize_text_field( $_POST['banner_btn_text'] ) );
+    }
+}
+add_action( 'save_post', 'kailash_save_banner_meta' );
+
+function kailash_add_insight_meta_boxes() {
+    add_meta_box(
+        'insight_options',
+        'Link liên kết',
+        'kailash_insight_callback',
+        'insight',
+        'normal',
+        'high'
+    );
+}
+add_action( 'add_meta_boxes', 'kailash_add_insight_meta_boxes' );
+
+function kailash_insight_callback( $post ) {
+    $link = get_post_meta( $post->ID, '_insight_link', true );
+    wp_nonce_field( 'save_insight_meta', 'insight_nonce' );
+    ?>
+    <p>
+        <label for="insight_link" style="font-weight:bold;">Đường dẫn (URL):</label>
+        <input type="url" id="insight_link" name="insight_link" value="<?php echo esc_attr( $link ); ?>" class="widefat" placeholder="https://...">
+    </p>
+    <?php
+}
+
+function kailash_save_insight_meta( $post_id ) {
+    if ( ! isset( $_POST['insight_nonce'] ) || ! wp_verify_nonce( $_POST['insight_nonce'], 'save_insight_meta' ) ) return;
+    if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) return;
+    
+    if ( isset( $_POST['insight_link'] ) ) {
+        update_post_meta( $post_id, '_insight_link', sanitize_text_field( $_POST['insight_link'] ) );
+    }
+}
+add_action( 'save_post', 'kailash_save_insight_meta' );
+
+/**
  * Implement the Custom Header feature.
  */
 // require get_template_directory() . '/inc/custom-header.php';

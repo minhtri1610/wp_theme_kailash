@@ -9,7 +9,7 @@
                     to contribute to the growth of our clients and our society.</p>
             </div>
             <div class="view-about view-white flex justify-end items-end mr-[0rem] link">
-                <a href="" class=""><?php pll_e('Giới thiệu'); ?></a>
+                <a href="<?php echo site_url('/gioi-thieu'); ?>" class=""><?php pll_e('Giới thiệu'); ?></a>
             </div>
         </div>
         
@@ -20,7 +20,7 @@
 
     <div class="list-about container">
         <div class="grid grid-cols-3 gap-3 ">
-            <a href="" class="col-span-1 -ml-[12px] group">
+            <a href="<?php echo site_url('/gioi-thieu'); ?>" class="col-span-1 -ml-[12px] group">
                 <div class="item-message relative 
                 after:content-[''] 
                 after:absolute 
@@ -35,7 +35,7 @@
                 </div>
             </a>
 
-            <a href="" class="col-span-1 group">
+            <a href="<?php echo site_url('/gioi-thieu'); ?>" class="col-span-1 group">
                 <div class="item-message relative
                 after:content-[''] 
                 after:absolute 
@@ -50,7 +50,7 @@
                 </div>
             </a>
 
-            <a href="" class="col-span-1 group">
+            <a href="<?php echo site_url('/gioi-thieu'); ?>" class="col-span-1 group">
                 <div class="item-message relative
                 after:content-[''] 
                 after:absolute 

@@ -7,7 +7,10 @@
  * @package kailash
  */
 
-get_header(); 
+get_header();
+$current_page_id = get_queried_object_id(); 
+// Lấy link sạch của trang đó
+$page_url = get_permalink( $current_page_id );
 
 // 1. CẤU HÌNH & LẤY THAM SỐ
 // -----------------------------------------------------------
@@ -140,7 +143,7 @@ if ($total_posts == 0) $start_result = 0;
                         </div>
                     </div>
                 </div>
-                <form role="search" method="get" action="<?php echo get_permalink(); ?>" class="col-span-2 p-4 flex align-center justify-center items-center flex-col">
+                <form role="search" method="get" action="<?php echo esc_url( $page_url ); ?>" class="col-span-2 p-4 flex align-center justify-center items-center flex-col">
                     <div class="el-search flex align-center items-center w-[80%] relative">
                         <input type="text" 
                             name="keyword" 
@@ -163,7 +166,9 @@ if ($total_posts == 0) $start_result = 0;
                         </button>
                     </div>
                     <div class="w-[80%] mt-2 text-right">
-                        <a class="col-span-1 py-4 text-[#b6b6b6] underline" href="<?php echo get_permalink(); ?>">Clear Search <i class="fa-solid fa-arrows-rotate"></i></a>
+                        <a class="col-span-1 py-4 text-[#b6b6b6] underline" href="<?php echo esc_url( $page_url ); ?>">
+                            Clear Search <i class="fa-solid fa-arrows-rotate"></i>
+                        </a>
                     </div>
                     
                 </form>

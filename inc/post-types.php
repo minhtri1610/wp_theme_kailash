@@ -62,6 +62,62 @@ function register_my_cpts() {
         'menu_position' => 15,
         'taxonomies'  => array( 'post_tag' ), 
     ));
+
+    register_post_type( 'banner', array(
+        'labels' => array( 
+            'name'          => 'Banner Home', 
+            'singular_name' => 'Banner',
+            'menu_name'     => 'Banner Home',
+            'add_new'       => 'Thêm Slide',
+            'add_new_item'  => 'Thêm Slide Mới',
+        ),
+        'public'        => true, // Không cần đường dẫn riêng cho từng slide
+        'publicly_queryable'  => false, // Tắt FALSE để KHÔNG truy cập được qua URL (domain.com/banner/...)
+        'exclude_from_search' => true,  // Loại bỏ khỏi kết quả tìm kiếm của web
+        'show_in_nav_menus'   => false,
+        'show_ui'       => true,  // Hiển thị trong Admin
+        'menu_icon'     => 'dashicons-images-alt2', // Icon hình ảnh
+        'menu_position' => 4,     // Đưa lên đầu menu cho dễ thấy
+        'supports'      => array( 'title', 'thumbnail', 'page-attributes' ), 
+        // 'title' -> Tiêu đề lớn
+        // 'thumbnail' -> Ảnh nền
+        // 'page-attributes' -> Để dùng ô "Order" sắp xếp thứ tự slide
+    ));
+
+    register_post_type( 'insight', array(
+        'labels' => array( 
+            'name'          => 'Banner Insight', 
+            'singular_name' => 'Insight',
+            'menu_name'     => 'Insight',
+            'add_new'       => 'Add Insight',
+            'add_new_item'  => 'Add Insight New',
+        ),
+        'public'              => true,
+        'publicly_queryable'  => false,
+        'exclude_from_search' => true,
+        'show_ui'             => true,
+        'menu_icon'           => 'dashicons-visibility', // Icon con mắt
+        'menu_position'       => 5,
+        'supports'            => array( 'title', 'thumbnail', 'page-attributes' ), 
+    ));
+
+    register_post_type( 'recent_work', array(
+        'labels' => array( 
+            'name' => 'Recent Work', 
+            'singular_name' => 'Project', 
+            'menu_name' => 'Recent Work',
+            'add_new' => 'Add Project',
+            'add_new_item' => 'Add New Project'
+        ),
+        'public' => true,
+        'supports' => array( 'title', 'editor', 'thumbnail', 'excerpt' ), // Editor dùng cho nội dung chi tiết
+        'has_archive' => true,
+        'rewrite' => array('slug' => _x('projects', 'URL slug', 'kailash'), 'with_front' => false),
+        'show_in_rest' => true,
+        'menu_position' => 9, // Nằm dưới Knowledge
+        'menu_icon' => 'dashicons-portfolio', // Icon cặp hồ sơ
+    ));
+
 }
 add_action( 'init', 'register_my_cpts' );
 
