@@ -79,7 +79,7 @@ $social_linkedin = get_field('link_linkedin', $option_id);
 						<a class="text-white text-sm hover:text-slate-300" href="<?php echo site_url('/chinh-sach-cookie'); ?>"><?php pll_e('Chính sách cookie'); ?></a>
 					</div>
 					<div class="col-span-2">
-						<a class="text-white text-sm hover:text-slate-300" href="<?php echo site_url('/ma-so-dinh-danh-canhan-ma-so-dinh-danh-doanh-nghiep'); ?>"><?php pll_e('Mã số định danh cá nhân hoặc mã số định danh doanh nghiệp của công ty.'); ?></a>
+						<a class="text-white text-sm hover:text-slate-300" href="<?php echo site_url('/thong-tin-thue-va-xuat-hoa-don-cua-kailash'); ?>"><?php pll_e('Thông tin Thuế và Xuất Hóa đơn của Kailash'); ?></a>
 					</div>
 				</div>
 

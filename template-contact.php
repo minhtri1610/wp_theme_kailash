@@ -72,6 +72,19 @@ if ($company_address) {
                     </h3>
                     
                     <div class="space-y-6">
+                        <!-- Tên công ty -->
+                        <?php if($company_name): ?>
+                        <div class="flex items-start">
+                            <div class="w-10 h-10 rounded-full bg-[#125f4b]/10 flex items-center justify-center text-[#125f4b] flex-shrink-0 mt-1">
+                                <i class="fa-solid fa-building text-lg"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="text-sm font-bold text-gray-900 uppercase tracking-wide mb-1"><?php pll_e('Tên công ty'); ?></h4>
+                                <p class="text-gray-600"><?php echo nl2br(esc_html($company_name)); ?></p>
+                                <p>MST: <?php echo get_field('tax_id', $option_id); ?></p>
+                            </div>
+                        </div>
+                        <?php endif; ?>
                         <!-- Địa chỉ -->
                         <?php if($company_address): ?>
                         <div class="flex items-start">
