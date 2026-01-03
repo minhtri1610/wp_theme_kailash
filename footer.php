@@ -67,7 +67,7 @@ $social_linkedin = get_field('link_linkedin', $option_id);
 
 				<div class="grid grid-cols-5 gap-4 mb-5">
 					<div class="">
-						<a class="text-white text-sm hover:text-slate-300" href="<?php echo site_url('/tuyen-bo-mien-tri-trach-nhiem'); ?>"><?php pll_e('Tuyên bố miễn trừ trách nhiệm'); ?></a>
+						<a class="text-white text-sm hover:text-slate-300" href="<?php echo site_url('/tuyen-bo-mien-tru-trach-nhiem'); ?>"><?php pll_e('Tuyên bố miễn trừ trách nhiệm'); ?></a>
 					</div>
 					<div class="col-span-2">
 						<a class="text-white text-sm hover:text-slate-300" href="<?php echo site_url('/chinh-sach-bao-mat-danh-cho-chu-the-du-lieu'); ?>"><?php pll_e('Chính sách bảo mật dữ liệu dành cho chủ thể dữ liệu'); ?></a>
