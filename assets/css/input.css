@@ -289,3 +289,71 @@ linear;
 .text-red-500 {
     color: #ef4444; /* Màu đỏ */
 }
+
+
+/* --- FORMAT NỘI DUNG BÀI VIẾT (Fix Tailwind Preflight) --- */
+.entry-content h1, .entry-content h2, .entry-content h3, 
+.entry-content h4, .entry-content h5, .entry-content h6 {
+    font-weight: 700;
+    color: #125f4b; /* Màu xanh thương hiệu */
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    line-height: 1.3;
+}
+
+.entry-content h1 { font-size: 2.25rem; } /* text-4xl */
+.entry-content h2 { font-size: 1.875rem; } /* text-3xl */
+.entry-content h3 { font-size: 1.5rem; }   /* text-2xl */
+.entry-content h4 { font-size: 1.25rem; }  /* text-xl */
+
+.entry-content p {
+    margin-bottom: 1.5rem;
+}
+
+.entry-content ul, .entry-content ol {
+    margin-bottom: 1.5rem;
+    padding-left: 1.5rem;
+}
+
+.entry-content ul { list-style-type: disc; }
+.entry-content ol { list-style-type: decimal; }
+
+.entry-content a {
+    color: #125f4b;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+.entry-content a:hover {
+    color: #0a4535;
+}
+
+.entry-content blockquote {
+    border-left: 4px solid #125f4b;
+    padding-left: 1rem;
+    font-style: italic;
+    color: #555;
+    margin: 1.5rem 0;
+}
+
+.entry-content img {
+    border-radius: 0.5rem;
+    margin: 1.5rem 0;
+    max-width: 100%;
+    height: auto;
+}
+
+/* Table styles */
+.entry-content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1.5rem;
+}
+.entry-content th, .entry-content td {
+    border: 1px solid #e5e7eb;
+    padding: 0.75rem;
+}
+.entry-content th {
+    background-color: #f9fafb;
+    font-weight: 600;
+}
