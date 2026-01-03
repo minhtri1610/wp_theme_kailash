@@ -19,35 +19,37 @@ get_header();
             ?>
 
             <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-                
-                <!-- 1. Header Trang -->
-                <header class="entry-header mb-12 text-left">
-                    <h1 class="text-3xl font-bold text-[#125f4b] mb-6 capitalize">
-                        <?php the_title(); ?>
-                    </h1>
-                    
-                    <!-- Breadcrumb (Nếu có hàm này) -->
-                    <?php if (function_exists('kailash_breadcrumbs')) : ?>
-                        <div class="flex justify-center">
-                            <?php kailash_breadcrumbs(); ?>
-                        </div>
-                    <?php endif; ?>
-                </header>
 
                 <!-- 2. Nội dung chi tiết -->
                 <!-- Sử dụng class 'prose' của Tailwind để format văn bản tự động (H2, H3, ul, ol...) -->
                 <div class="entry-content max-w-4xl mx-auto text-gray-700 leading-relaxed text-justify prose prose-lg prose-headings:text-[#125f4b] prose-a:text-[#125f4b]">
-                    <?php
-                    the_content();
+                    <!-- 1. Header Trang -->
+                    <header class="entry-header mb-12 text-left">
+                        <h1 class="text-3xl font-bold text-[#125f4b] mb-6 capitalize">
+                            <?php the_title(); ?>
+                        </h1>
+                        
+                        <!-- Breadcrumb (Nếu có hàm này) -->
+                        <?php if (function_exists('kailash_breadcrumbs')) : ?>
+                            <div class="flex justify-center">
+                                <?php kailash_breadcrumbs(); ?>
+                            </div>
+                        <?php endif; ?>
+                    </header>
 
-                    // Phân trang cho nội dung dài (nếu có dùng thẻ <!--nextpage-->)
-                    wp_link_pages(
-                        array(
-                            'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'kailash' ),
-                            'after'  => '</div>',
-                        )
-                    );
-                    ?>
+                    <div class="entry-content prose prose-lg max-w-none text-gray-700 leading-relaxed text-justify">
+                    <?php
+                    
+                        the_content();
+                        // Phân trang cho nội dung dài (nếu có dùng thẻ <!--nextpage-->)
+                        wp_link_pages(
+                            array(
+                                'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'kailash' ),
+                                'after'  => '</div>',
+                            )
+                        );
+                        ?>
+                    </div>
                 </div>
 
             </article>
