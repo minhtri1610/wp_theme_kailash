@@ -21,8 +21,8 @@ get_header();
             <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
                 
                 <!-- 1. Header Trang -->
-                <header class="entry-header mb-12 text-center">
-                    <h1 class="text-3xl md:text-5xl font-bold text-[#125f4b] mb-6 uppercase">
+                <header class="entry-header mb-12 text-left">
+                    <h1 class="text-3xl font-bold text-[#125f4b] mb-6 capitalize">
                         <?php the_title(); ?>
                     </h1>
                     
