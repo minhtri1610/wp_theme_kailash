@@ -88,13 +88,13 @@ $social_linkedin = get_field('link_linkedin', $option_id);
 						<a class="text-white text-sm hover:text-slate-300" href="<?php echo site_url('/thong-tin-phap-ly'); ?>"><?php pll_e('Thông tin pháp lý'); ?></a>
 					</div>
 					<div class="col-span-2">
-						<a class="text-white text-sm hover:text-slate-300" href="<?php echo site_url('/cach-tiep-can-cong-ty-doi-vi-xung-dot-loi-ich'); ?>"><?php pll_e('Cách tiếp cận của công ty đối với xung đột lợi ích'); ?></a>
+						<a class="text-white text-sm hover:text-slate-300" href="<?php echo site_url('/quan-diem-cua-kailash-ve-xung-dot-loi-ich'); ?>"><?php pll_e('Cách tiếp cận của công ty đối với xung đột lợi ích'); ?></a>
 					</div>
 				</div>
 
 				<div class="grid grid-cols-5 gap-4 mb-5">
 					<div class="">
-						<a class="text-white text-sm hover:text-slate-300" href="<?php echo site_url('/chinh-sach-ai-cua-doanh-nghiep'); ?>"><?php pll_e('Chính sách AI của doanh nghiệp'); ?></a>
+						<a class="text-white text-sm hover:text-slate-300" href="<?php echo site_url('/chinh-sach-ai-doanh-nghiep'); ?>"><?php pll_e('Chính sách AI của doanh nghiệp'); ?></a>
 					</div>
 					<div class="col-span-2">
 						<a class="text-white text-sm hover:text-slate-300" href="<?php echo site_url('/chinh-sach-bao-ve-thong-tin-ca-nhan'); ?>"><?php pll_e('Chính sách bảo vệ thông tin cá nhân'); ?></a>
