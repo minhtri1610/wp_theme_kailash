@@ -43,7 +43,7 @@ add_action('init', function() {
     pll_register_string('View detail', 'Xem chi tiết', $group);
 
     //page cộng sự
-    pll_register_string('Knowledge', 'Kiến thức', $group);
+    pll_register_string('Knowledge', 'Ấn Phẩm', $group);
 
     //page cộng sự
     pll_register_string('People', 'Cộng sự', $group);

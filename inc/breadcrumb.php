@@ -39,6 +39,8 @@ function kailash_breadcrumbs() {
             $archive_title = $post_type_obj->labels->menu_name; 
             // Nếu muốn custom tên cụ thể cho Experience
             if(get_post_type() == 'experience') $archive_title = function_exists('pll__') ? pll__('Kinh Nghiệm') : 'Kinh Nghiệm';
+
+            if(get_post_type() == 'knowledge') $archive_title = function_exists('pll__') ? pll__('Ấn Phẩm') : 'Ấn Phẩm';
             
             echo '<a href="' . esc_url($archive_link) . '" class="' . esc_attr($link_class) . '">' . esc_html($archive_title) . '</a>';
             echo $separator;
