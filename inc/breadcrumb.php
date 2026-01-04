@@ -38,7 +38,7 @@ function kailash_breadcrumbs() {
             // Fix tên hiển thị cho đa ngôn ngữ nếu cần, hoặc lấy mặc định
             $archive_title = $post_type_obj->labels->menu_name; 
             // Nếu muốn custom tên cụ thể cho Experience
-            if(get_post_type() == 'experience') $archive_title = function_exists('pll__') ? pll__('Dịch vụ') : 'Dịch vụ';
+            if(get_post_type() == 'experience') $archive_title = function_exists('pll__') ? pll__('Kinh Nghiệm') : 'Kinh Nghiệm';
             
             echo '<a href="' . esc_url($archive_link) . '" class="' . esc_attr($link_class) . '">' . esc_html($archive_title) . '</a>';
             echo $separator;

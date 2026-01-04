@@ -39,7 +39,7 @@ add_action('init', function() {
     pll_register_string('No services found', 'Chưa có dịch vụ nào.', $group);
 
     //page dịch vụ
-    pll_register_string('Experience', 'Dịch vụ', $group);
+    pll_register_string('Experience', 'Kinh Nghiệm', $group);
     pll_register_string('View detail', 'Xem chi tiết', $group);
 
     //page cộng sự
