@@ -61,6 +61,8 @@ function register_my_cpts() {
         'menu_icon' => 'dashicons-book',
         'menu_position' => 15,
         'taxonomies'  => array( 'post_tag' ), 
+        'capability_type' => array('knowledge', 'knowledges'), 
+        'map_meta_cap'    => true, 
     ));
 
     register_post_type( 'banner', array(

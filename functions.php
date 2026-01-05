@@ -378,6 +378,46 @@ function kailash_save_insight_meta( $post_id ) {
 add_action( 'save_post', 'kailash_save_insight_meta' );
 
 /**
+ * Tạo Role "Knowledge Editor" và phân quyền
+ * Chạy 1 lần khi khởi tạo theme
+ */
+function kailash_add_custom_roles() {
+
+    remove_role( 'knowledge_editor' );
+    
+    // 1. Tạo Role mới: "Knowledge Editor" (Người biên tập Kiến thức)
+    add_role( 'knowledge_editor', 'Editor guest', array(
+        'read'         => true,  // Được vào trang quản trị
+        'upload_files' => true,  // Được up ảnh
+        
+        // Các quyền riêng của Knowledge
+        'edit_knowledges'             => true,
+        'edit_others_knowledges'      => true,
+        'publish_knowledges'          => true,
+        'read_private_knowledges'     => true,
+        'delete_knowledges'           => true,
+        'delete_others_knowledges'    => true,
+        'delete_published_knowledges' => true,
+        'edit_published_knowledges'   => true,
+    ));
+
+    // 2. Cấp quyền này cho Administrator (Bắt buộc, nếu không Admin sẽ mất quyền)
+    $admin_role = get_role( 'administrator' );
+    if ( $admin_role ) {
+        $admin_role->add_cap( 'edit_knowledges' );
+        $admin_role->add_cap( 'edit_others_knowledges' );
+        $admin_role->add_cap( 'publish_knowledges' );
+        $admin_role->add_cap( 'read_private_knowledges' );
+        $admin_role->add_cap( 'delete_knowledges' );
+        $admin_role->add_cap( 'delete_others_knowledges' );
+        $admin_role->add_cap( 'delete_published_knowledges' );
+        $admin_role->add_cap( 'edit_published_knowledges' );
+    }
+}
+// Hook vào 'admin_init' để chạy lệnh này
+add_action( 'admin_init', 'kailash_add_custom_roles' );
+
+/**
  * Implement the Custom Header feature.
  */
 // require get_template_directory() . '/inc/custom-header.php';
