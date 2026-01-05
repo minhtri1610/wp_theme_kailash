@@ -35,7 +35,7 @@ if ( is_post_type_archive('knowledge') && !is_page() ) {
     <div class="container mx-auto px-4">
         <!-- HEADER -->
         <div class="text-left mb-12">
-            <h2 class="text-4xl font-semibold text-black my-[3rem]"><?php pll_e('Kiến thức') ?> </h2>
+            <h2 class="text-4xl font-semibold text-black my-[3rem]"><?php pll_e('Ấn phẩm') ?> </h2>
         </div>
         <div class="max-w-2xl text-left text-gray-600 mb-12">
             <p><?php pll_e('Cập nhật những thông tin, kiến thức pháp lý và thị trường mới nhất.'); ?></p>
@@ -170,7 +170,7 @@ if ( is_post_type_archive('knowledge') && !is_page() ) {
 
         <?php else : ?>
             <div class="text-center py-20">
-                <p class="text-gray-500 text-lg"><?php pll_e('Chưa có bài viết kiến thức nào.'); ?></p>
+                <p class="text-gray-500 text-lg"><?php pll_e('Chưa có ấn phẩm nào.'); ?></p>
             </div>
         <?php endif; ?>
 
