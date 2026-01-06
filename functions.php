@@ -9,7 +9,7 @@
 
 if ( ! defined( '_S_VERSION' ) ) {
 	// Replace the version number of the theme on each release.
-	define( '_S_VERSION', '1.0.1' );
+	define( '_S_VERSION', '1.0.4' );
 }
 
 /**
@@ -143,7 +143,7 @@ function kailash_scripts() {
 	wp_enqueue_style( 'kailash-style', get_stylesheet_uri(), array(), _S_VERSION );
 	wp_style_add_data( 'kailash-style', 'rtl', 'replace' );
 
-	wp_enqueue_style( 'kailash-tailwind', get_template_directory_uri() . '/style.css', array('kailash-style'), '1.0.3' );
+	wp_enqueue_style( 'kailash-tailwind', get_template_directory_uri() . '/style.css', array('kailash-style'), '1.0.4' );
 
 	wp_enqueue_script( 'kailash-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
     wp_enqueue_script('menu-js', get_template_directory_uri() . '/assets/js/menu.js', [], false, true);
@@ -152,7 +152,7 @@ function kailash_scripts() {
 		'my-homepage-style', // Tên định danh (handle) duy nhất
 		get_template_directory_uri() . '/assets/css/home.css', // Đường dẫn tới file
 		array(), // Các file CSS phụ thuộc (nếu có)
-		'1.0.0' // Phiên bản (tốt cho cache)
+		'1.0.4' // Phiên bản (tốt cho cache)
 	);
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
