@@ -22,96 +22,105 @@ $social_facebook = get_field('social_facebook', $option_id);
 $social_linkedin = get_field('link_linkedin', $option_id);
 ?>
 	<footer id="site-footer" class="bg-gradient-to-b from-[#016549] to-[#003425] pt-10 relative">
-		<div class="wapper-footer container">
-			<div class="list-menu border-b border-b-[#C4C4C4]/20">
+    
+		<div class="wapper-footer container mx-auto px-4 md:px-0">
+			
+			<div class="list-menu border-b border-b-[#C4C4C4]/20 pb-4 md:pb-0">
 				<?php
 					wp_nav_menu(array(
 						'menu_id'        => 'footer-menu',
 						'theme_location' => 'footer_menu',
 						'container'      => false,
-						'menu_class'     => 'top-menu flex flex-row content-center justify-start space-x-4',
+						// RESPONSIVE MENU:
+						// 1. flex-col: Mobile xếp dọc
+						// 2. md:flex-row: Desktop xếp ngang
+						// 3. space-y-3: Mobile cách nhau dọc
+						// 4. md:space-y-0: Desktop bỏ cách dọc
+						// 5. md:space-x-6: Desktop cách nhau ngang
+						'menu_class'     => 'top-menu flex flex-col md:flex-row content-center justify-start space-y-3 md:space-y-0 md:space-x-6 text-white text-sm font-medium',
 						'fallback_cb'    => false,
 					));
 				?>
 			</div>
-			<div class="list-social-media mt-3">
+
+			<div class="list-social-media mt-6 md:mt-3">
 				<ul class="flex flex-row">
 					<?php if($social_facebook): ?>
-                    <li class="mr-4">
-                        <a href="<?php echo esc_url($social_facebook); ?>" target="_blank" class="block hover:-translate-y-1 transition-transform">
-                            <i class="fa-brands fa-facebook text-[#dfdfdf] hover:text-white text-3xl"></i>
-                        </a>
-                    </li>
-                    <?php endif; ?>
+					<li class="mr-4">
+						<a href="<?php echo esc_url($social_facebook); ?>" target="_blank" class="block hover:-translate-y-1 transition-transform">
+							<i class="fa-brands fa-facebook text-[#dfdfdf] hover:text-white text-3xl"></i>
+						</a>
+					</li>
+					<?php endif; ?>
 
-                    <?php if($social_linkedin): ?>
-                    <li>
-                        <a href="<?php echo esc_url($social_linkedin); ?>" target="_blank" class="block hover:-translate-y-1 transition-transform">
-                            <i class="fa-brands fa-linkedin text-[#dfdfdf] hover:text-white text-3xl"></i>
-                        </a>
-                    </li>
-                    <?php endif; ?>
+					<?php if($social_linkedin): ?>
+					<li>
+						<a href="<?php echo esc_url($social_linkedin); ?>" target="_blank" class="block hover:-translate-y-1 transition-transform">
+							<i class="fa-brands fa-linkedin text-[#dfdfdf] hover:text-white text-3xl"></i>
+						</a>
+					</li>
+					<?php endif; ?>
 				</ul>
 			</div>
 
-			<div class="footer-info my-10">
+			<div class="footer-info my-8 md:my-10">
 
-				<div class="grid grid-cols-5 gap-4 mb-5">
+				<div class="grid grid-cols-1 md:grid-cols-5 gap-2 md:gap-4 mb-4 md:mb-5">
 					<div class="">
-						<a class="text-white text-sm hover:text-slate-300" href="<?php echo site_url('/chinh-sach-trang-web'); ?>"><?php pll_e('Chính sách trang web'); ?></a>
+						<a class="text-white text-sm hover:text-slate-300 block py-1 md:py-0" href="<?php echo site_url('/chinh-sach-trang-web'); ?>"><?php pll_e('Chính sách trang web'); ?></a>
 					</div>
-					<div class="col-span-2">
-						<a class="text-white text-sm hover:text-slate-300" href="<?php echo site_url('/chinh-sach-co-ban-ve-bao-mat-thong-tin'); ?>"><?php pll_e('Chính sách cơ bản về bảo mật thông tin'); ?></a>
+					<div class="col-span-1 md:col-span-2">
+						<a class="text-white text-sm hover:text-slate-300 block py-1 md:py-0" href="<?php echo site_url('/chinh-sach-co-ban-ve-bao-mat-thong-tin'); ?>"><?php pll_e('Chính sách cơ bản về bảo mật thông tin'); ?></a>
 					</div>
 				</div>
 
-				<div class="grid grid-cols-5 gap-4 mb-5">
+				<div class="grid grid-cols-1 md:grid-cols-5 gap-2 md:gap-4 mb-4 md:mb-5">
 					<div class="">
-						<a class="text-white text-sm hover:text-slate-300" href="<?php echo site_url('/tuyen-bo-mien-tru-trach-nhiem'); ?>"><?php pll_e('Tuyên bố miễn trừ trách nhiệm'); ?></a>
+						<a class="text-white text-sm hover:text-slate-300 block py-1 md:py-0" href="<?php echo site_url('/tuyen-bo-mien-tru-trach-nhiem'); ?>"><?php pll_e('Tuyên bố miễn trừ trách nhiệm'); ?></a>
 					</div>
-					<div class="col-span-2">
-						<a class="text-white text-sm hover:text-slate-300" href="<?php echo site_url('/chinh-sach-bao-mat-danh-cho-chu-the-du-lieu'); ?>"><?php pll_e('Chính sách bảo mật dữ liệu dành cho chủ thể dữ liệu'); ?></a>
+					<div class="col-span-1 md:col-span-2">
+						<a class="text-white text-sm hover:text-slate-300 block py-1 md:py-0" href="<?php echo site_url('/chinh-sach-bao-mat-danh-cho-chu-the-du-lieu'); ?>"><?php pll_e('Chính sách bảo mật dữ liệu dành cho chủ thể dữ liệu'); ?></a>
 					</div>
 				</div>
 
-				<div class="grid grid-cols-5 gap-4 mb-5">
+				<div class="grid grid-cols-1 md:grid-cols-5 gap-2 md:gap-4 mb-4 md:mb-5">
 					<div class="">
-						<a class="text-white text-sm hover:text-slate-300" href="<?php echo site_url('/chinh-sach-cookie'); ?>"><?php pll_e('Chính sách cookie'); ?></a>
+						<a class="text-white text-sm hover:text-slate-300 block py-1 md:py-0" href="<?php echo site_url('/chinh-sach-cookie'); ?>"><?php pll_e('Chính sách cookie'); ?></a>
 					</div>
-					<div class="col-span-2">
-						<a class="text-white text-sm hover:text-slate-300" href="<?php echo site_url('/thong-tin-thue-va-xuat-hoa-don-cua-kailash'); ?>"><?php pll_e('Thông tin Thuế và Xuất Hóa đơn của Kailash'); ?></a>
+					<div class="col-span-1 md:col-span-2">
+						<a class="text-white text-sm hover:text-slate-300 block py-1 md:py-0" href="<?php echo site_url('/thong-tin-thue-va-xuat-hoa-don-cua-kailash'); ?>"><?php pll_e('Thông tin Thuế và Xuất Hóa đơn của Kailash'); ?></a>
 					</div>
 				</div>
 
-				<div class="grid grid-cols-5 gap-4 mb-5">
+				<div class="grid grid-cols-1 md:grid-cols-5 gap-2 md:gap-4 mb-4 md:mb-5">
 					<div class="">
-						<a class="text-white text-sm hover:text-slate-300" href="<?php echo site_url('/thong-tin-phap-ly'); ?>"><?php pll_e('Thông tin pháp lý'); ?></a>
+						<a class="text-white text-sm hover:text-slate-300 block py-1 md:py-0" href="<?php echo site_url('/thong-tin-phap-ly'); ?>"><?php pll_e('Thông tin pháp lý'); ?></a>
 					</div>
-					<div class="col-span-2">
-						<a class="text-white text-sm hover:text-slate-300" href="<?php echo site_url('/quan-diem-cua-kailash-ve-xung-dot-loi-ich'); ?>"><?php pll_e('Cách tiếp cận của công ty đối với xung đột lợi ích'); ?></a>
+					<div class="col-span-1 md:col-span-2">
+						<a class="text-white text-sm hover:text-slate-300 block py-1 md:py-0" href="<?php echo site_url('/quan-diem-cua-kailash-ve-xung-dot-loi-ich'); ?>"><?php pll_e('Cách tiếp cận của công ty đối với xung đột lợi ích'); ?></a>
 					</div>
 				</div>
 
-				<div class="grid grid-cols-5 gap-4 mb-5">
+				<div class="grid grid-cols-1 md:grid-cols-5 gap-2 md:gap-4 mb-4 md:mb-5">
 					<div class="">
-						<a class="text-white text-sm hover:text-slate-300" href="<?php echo site_url('/chinh-sach-ai-doanh-nghiep'); ?>"><?php pll_e('Chính sách AI của doanh nghiệp'); ?></a>
+						<a class="text-white text-sm hover:text-slate-300 block py-1 md:py-0" href="<?php echo site_url('/chinh-sach-ai-doanh-nghiep'); ?>"><?php pll_e('Chính sách AI của doanh nghiệp'); ?></a>
 					</div>
-					<div class="col-span-2">
-						<a class="text-white text-sm hover:text-slate-300" href="<?php echo site_url('/chinh-sach-bao-ve-thong-tin-ca-nhan'); ?>"><?php pll_e('Chính sách bảo vệ thông tin cá nhân'); ?></a>
+					<div class="col-span-1 md:col-span-2">
+						<a class="text-white text-sm hover:text-slate-300 block py-1 md:py-0" href="<?php echo site_url('/chinh-sach-bao-ve-thong-tin-ca-nhan'); ?>"><?php pll_e('Chính sách bảo vệ thông tin cá nhân'); ?></a>
 					</div>
 				</div>
 
 			</div>
-			<div class="copyright text-center pb-3">
-				<p class="text-[#dfdfdf] text-sm">© 2025 <?php echo $company_name ? esc_html($company_name) : 'Kailash'; ?>. All rights reserved.</p>
+
+			<div class="copyright text-center pb-6 md:pb-3 border-t border-white/10 pt-4 md:border-none md:pt-0">
+				<p class="text-[#dfdfdf] text-xs md:text-sm">© 2025 <?php echo $company_name ? esc_html($company_name) : 'Kailash'; ?>. All rights reserved.</p>
 			</div>
 		</div>
-		<div class="footer-arrows">
-
-		</div>
+		
+		<div class="footer-arrows"></div>
 
 		<a id="backToTop" href="#" class="fixed right-10 z-50 hidden p-3 transition-opacity duration-300"
-    style="bottom: 20px;">Page Top</a>
+    	style="bottom: 20px;">Page Top</a>
 	</footer>
 
 	
@@ -141,20 +150,75 @@ $social_linkedin = get_field('link_linkedin', $option_id);
         });
 
 		$('#list-people').slick({
+			// --- CẤU HÌNH MẶC ĐỊNH (DESKTOP) ---
 			infinite: true,
 			slidesToShow: 4,
 			slidesToScroll: 1,
 			autoplay: true,
-			autoplaySpeed: 1000,
+			autoplaySpeed: 3000, // Nên để chậm lại (3s) để khách kịp đọc, 1000ms là quá nhanh
+			arrows: true,        // Hiện mũi tên điều hướng trên desktop
+			dots: false,
+			
+			// --- CẤU HÌNH RESPONSIVE ---
+			responsive: [
+				{
+					// Breakpoint: Dưới 1024px (Tablet ngang / Laptop nhỏ)
+					breakpoint: 1024,
+					settings: {
+						slidesToShow: 3,
+						slidesToScroll: 1,
+						infinite: true,
+					}
+				},
+				{
+					// Breakpoint: Dưới 768px (Tablet dọc)
+					breakpoint: 768,
+					settings: {
+						slidesToShow: 2,
+						slidesToScroll: 1
+					}
+				},
+				{
+					// Breakpoint: Dưới 480px (Mobile)
+					breakpoint: 480,
+					settings: {
+						slidesToShow: 1,
+						slidesToScroll: 1,
+						arrows: false,     // Tắt mũi tên trên mobile cho gọn
+						dots: true,        // Bật dấu chấm tròn (pagination) thay thế
+						centerMode: false, // Tắt centerMode để item canh trái gọn gàng
+					}
+				}
+			]
 		});
 
 		$('#slides-recent-work').slick({
-			slidesToShow: 3,
-			slidesToScroll: 3,
+			infinite: true,
+			slidesToShow: 3,      // Desktop hiện 3 hoặc 4 tùy design
+			slidesToScroll: 1,
 			arrows: true,
+			dots: false,
 			autoplay: true,
-			autoplaySpeed: 1000,
-        });
+			autoplaySpeed: 3000,
+			responsive: [
+				{
+					breakpoint: 1024,
+					settings: {
+						slidesToShow: 2,
+						slidesToScroll: 1,
+					}
+				},
+				{
+					breakpoint: 640, // Mobile
+					settings: {
+						slidesToShow: 1.2, // Hiện 1 cái và hé lộ 20% cái sau (Peeking effect) -> UX tốt hơn
+						slidesToScroll: 1,
+						arrows: false,     // Tắt arrow trên mobile
+						dots: true         // Bật dot
+					}
+				}
+			]
+		});
 		
 		
     });

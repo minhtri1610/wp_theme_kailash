@@ -2,13 +2,11 @@
 /**
  * Template Name: Trang Chủ
  *
- * Đây là template cho trang chủ, nó sẽ tự động được
- * WordPress sử dụng khi file này tồn tại.
- *
+ * Responsive Optimized by Coder WP
  * @package kailash
  */
 
-get_header(); // Tải file header.php
+get_header(); 
 
 $people_search = 'archive-people.php';
 $pages = get_posts(array(
@@ -17,28 +15,25 @@ $pages = get_posts(array(
     'meta_key'       => '_wp_page_template',
     'meta_value'     => $people_search,
     'fields'         => 'ids',
-    'lang'           => pll_current_language(), // QUAN TRỌNG: Chỉ tìm trang thuộc ngôn ngữ hiện tại
+    'lang'           => pll_current_language(),
 ));
-if ( !empty($pages) ) {
-    $action_url = get_permalink( $pages[0] );
-} else {
-    // Fallback: Nếu không tìm thấy, về trang chủ hoặc hiện lỗi
-    $action_url = home_url('/'); 
-}
+
+// Logic fallback giữ nguyên
+$action_url = !empty($pages) ? get_permalink( $pages[0] ) : home_url('/'); 
 ?>
 
 <main id="primary" class="site-main">
 
-<?php get_template_part('template-parts/banner'); ?>
+    <?php get_template_part('template-parts/banner'); ?>
 
-    <!-- search -->
-    <section id="search" class="container relative h-[180px]">
-        <div class="wrapper-search grid grid-cols-3 bg-[#2b2b2b] gap-1 absolute -top-[60px] w-full shadow-lg z-10">
+    <section id="search" class="container relative h-auto md:h-[180px] z-20">
+        
+        <div class="wrapper-search grid grid-cols-1 md:grid-cols-3 bg-[#2b2b2b] gap-0 md:gap-1 relative md:absolute mt-[-30px] md:mt-0 top-0 md:-top-[60px] w-full shadow-xl z-10 rounded-lg md:rounded-none overflow-hidden md:overflow-visible">
             
-            <div class="col-span-1 p-4 border-r border-[#555555]"> 
-                <div class="p-4 text-white">
-                    <h2 class="text-3xl font-bold mb-4"><?php pll_e('s_tieu_de_tim_kiem'); ?></h2>
-                    <div class="desc-find">
+            <div class="col-span-1 p-6 border-b border-[#555555] md:border-b-0 md:border-r"> 
+                <div class="p-2 md:p-4 text-white text-center md:text-left">
+                    <h2 class="text-2xl md:text-3xl font-bold mb-2 md:mb-4"><?php pll_e('s_tieu_de_tim_kiem'); ?></h2>
+                    <div class="desc-find text-sm md:text-base text-gray-300">
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Error nemo atque corporis.
                     </div>
                 </div>
@@ -47,19 +42,19 @@ if ( !empty($pages) ) {
             <form 
                 action="<?php echo esc_url( $action_url ); ?>" 
                 method="GET" 
-                class="col-span-2 p-4 flex align-center justify-center items-center"
+                class="col-span-1 md:col-span-2 p-6 flex align-center justify-center items-center"
             >
-                <div class="el-search flex align-center items-center w-[80%] relative">
+                <div class="el-search flex align-center items-center w-full md:w-[80%] relative">
                     
                     <input 
                         type="text" 
                         name="keyword" 
-                        class="w-full px-4 py-4 bg-[#414141] text-white text-base outline-none focus:bg-[#505050] transition-colors" 
+                        class="w-full px-4 py-3 md:py-4 bg-[#414141] text-white text-base outline-none focus:bg-[#505050] transition-colors rounded md:rounded-none border border-transparent focus:border-gray-500" 
                         placeholder="<?php pll_e('s_placeholder_tim_kiem'); ?>"
                         required 
                     >
                     
-                    <button type="submit" class="text-white absolute right-4 hover:text-yellow-500 transition-colors">
+                    <button type="submit" class="text-white absolute right-4 p-2 hover:text-yellow-500 transition-colors">
                         <svg 
                             xmlns="http://www.w3.org/2000/svg" 
                             width="24" 
@@ -80,10 +75,10 @@ if ( !empty($pages) ) {
         </div>
     </section>
 
-    <!-- Danh sách dịch vụ -->
-    <?php get_template_part( 'components/home/insight' ); ?>
+    <div class="pt-10 md:pt-0">
+        <?php get_template_part( 'components/home/insight' ); ?>
+    </div>
 
-    <!-- Danh sách bài viết -->
     <?php get_template_part( 'components/home/knowledge' ); ?>
 
     <?php get_template_part( 'components/home/people' ); ?>
@@ -97,5 +92,5 @@ if ( !empty($pages) ) {
 </main>
 
 <?php
-get_footer(); // Tải file footer.php
+get_footer(); 
 ?>
