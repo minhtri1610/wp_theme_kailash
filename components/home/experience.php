@@ -23,7 +23,7 @@
                 
                 <div class="flex justify-start items-end link mt-4 md:mt-5">
                     <a href="<?php echo site_url('/dich-vu'); ?>" class="text-[#125f4b] font-semibold hover:underline flex items-center gap-2">
-                        <?php pll_e('Dịch vụ'); ?> <i class="fa-solid fa-angles-right text-sm"></i>
+                        <?php pll_e('Xem chi tiết'); ?>
                     </a>
                 </div>
             </div>

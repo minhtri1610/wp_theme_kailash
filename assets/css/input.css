@@ -197,7 +197,7 @@ ul.list_arrow li a:before {
     transform: rotate(45deg);
     pointer-events: none;
     left: 0;
-    top: 0.5em;
+    top: 0.8em;
     bottom: auto;
 }
 
