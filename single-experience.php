@@ -231,7 +231,7 @@ $is_level_1 = ($post_parent_id == 0);
 
         <?php else : ?>
             
-            <div class="level-1-layout max-w-6xl mx-auto">
+            <div class="level-1-layout">
                 
                 <div class="mb-16 text-center md:text-left">
                     <h2 class="text-2xl md:text-3xl font-bold mb-6 text-[#aa7d59] border-b-2 border-[#125f4b] inline-block pb-2">
