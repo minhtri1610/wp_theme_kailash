@@ -84,18 +84,18 @@ $company_phone   = get_field('company_phone', $option_id);
 						wp_nav_menu(array(
 							'theme_location' => 'lang_menu',
 							'container'      => false,
-							'menu_class'     => 'top-menu flex flex-row content-center justify-center space-x-4', // Dùng Tailwind để style menu
+							'menu_class'     => 'top-menu flex flex-row content-center justify-center space-x-3 text-lg font-bold text-gray-800', // Dùng Tailwind để style menu
 							'fallback_cb'    => false,
 						));
 						?>
 
 
 						<button id="mobile-menu-button" class="p-2 text-gray-700">
-							<svg id="icon-hamburger" class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<svg id="icon-hamburger" class="h-9 w-9" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
                             </svg>
 
-                            <svg id="icon-close" class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <svg id="icon-close" class="hidden h-9 w-9" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                             </svg>
 							<!-- <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">

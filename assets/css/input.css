@@ -357,3 +357,77 @@ linear;
     background-color: #f9fafb;
     font-weight: 600;
 }
+
+/* =========================================
+   MOBILE ACCORDION MENU STYLES
+   ========================================= */
+
+/* 1. Ẩn menu con mặc định */
+/* Target chính xác vào menu con bên trong mobile wrapper */
+#mobile-menu .sub-menu {
+    /* 1. QUAN TRỌNG NHẤT: Đưa về luồng hiển thị tự nhiên */
+    position: static !important; 
+    
+    /* 2. Reset các thuộc tính định vị của Desktop (nếu có) */
+    opacity: 1 !important;
+    visibility: visible !important;
+    top: auto !important;
+    left: auto !important;
+    transform: none !important;
+    
+    /* 3. Reset giao diện Box (Bỏ bóng đổ, bỏ chiều rộng cố định) */
+    box-shadow: none !important;
+    width: 100% !important;
+    min-width: auto !important;
+    background-color: transparent; /* Hoặc màu nền bạn muốn */
+    
+    /* 4. Style hiển thị (ẩn hiện sẽ do JS điều khiển display:block/none) */
+    display: none; 
+    
+    /* 5. Thụt lề để phân cấp (Tùy chọn thẩm mỹ) */
+    padding-left: 15px; 
+    margin-top: 5px;
+}
+
+/* Khi JS thêm class này vào (lúc click mũi tên), menu sẽ hiện ra */
+#mobile-menu .sub-menu.open {
+    display: block !important;
+}
+
+/* 2. Thiết lập vị trí cho menu cha để đặt mũi tên */
+#mobile-menu .menu-item-has-children {
+    position: relative; /* Để mũi tên absolute căn theo nó */
+}
+
+/* 3. Style cho nút Mũi tên (Sẽ được tạo bằng JS) */
+.mobile-arrow-toggle {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50px; /* Vùng bấm rộng cho dễ bấm */
+    height: 50px; /* Bằng chiều cao link cha */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #125f4b; /* Màu xanh thương hiệu */
+    font-size: 1.2rem;
+    transition: transform 0.3s ease; /* Hiệu ứng xoay mượt */
+    z-index: 10; /* Nằm đè lên trên link a một chút */
+}
+
+/* 4. Hiệu ứng khi đang mở: Xoay mũi tên 180 độ */
+.mobile-arrow-toggle.active {
+    transform: rotate(180deg);
+}
+
+/* 5. Class hỗ trợ JS để hiện menu */
+.sub-menu-open {
+    display: block !important;
+    animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}

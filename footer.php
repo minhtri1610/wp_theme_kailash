@@ -381,5 +381,50 @@ $social_linkedin = get_field('link_linkedin', $option_id);
 		backToTopBtn.addEventListener('click', smoothScrollToTop);
 	});
 </script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // 1. Tìm vùng chứa menu mobile
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    if (mobileMenu) {
+        // 2. Lấy tất cả các li có menu con (WordPress tự thêm class .menu-item-has-children)
+        const itemsWithChildren = mobileMenu.querySelectorAll('.menu-item-has-children');
+
+        itemsWithChildren.forEach(function(item) {
+            // 3. Tạo thẻ span chứa icon mũi tên
+            const arrowSpan = document.createElement('span');
+            arrowSpan.className = 'mobile-arrow-toggle';
+            // Sử dụng FontAwesome chevron-down
+            arrowSpan.innerHTML = '<i class="fa-solid fa-chevron-down"></i>'; 
+            
+            // 4. Chèn mũi tên vào trong thẻ li (nó sẽ nằm đè lên bên phải nhờ CSS absolute)
+            // item là thẻ <li>, ta append vào cuối thẻ li (ngang hàng với <a> và <ul>)
+            // Tuy nhiên để an toàn, ta insert trước submenu ul
+            const subMenu = item.querySelector('.sub-menu');
+            if(subMenu) {
+                item.insertBefore(arrowSpan, subMenu);
+            }
+
+            // 5. Xử lý sự kiện Click vào mũi tên
+            arrowSpan.addEventListener('click', function(e) {
+                e.preventDefault(); // Ngăn chặn hành vi mặc định
+                e.stopPropagation(); // Ngăn sự kiện nổi bọt
+                
+                // Toggle class active cho mũi tên (để xoay)
+                this.classList.toggle('active');
+                
+                // Toggle hiện/ẩn menu con kế bên
+                if (subMenu) {
+                    if (subMenu.style.display === 'block') {
+                        subMenu.style.display = 'none';
+                    } else {
+                        subMenu.style.display = 'block';
+                    }
+                }
+            });
+        });
+    }
+});
+</script>
 </body>
 </html>
