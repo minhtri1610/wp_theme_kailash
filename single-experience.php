@@ -317,7 +317,7 @@ $is_level_1 = ($post_parent_id == 0);
                                             <?php if($p_avatar): ?>
                                                 <img src="<?php echo esc_url($p_avatar); ?>" class="w-full h-full object-cover">
                                             <?php else: ?>
-                                                <img src="https://dummyimage.com/150x150/eee/999&text=User" class="w-full h-full object-cover">
+                                                <img src="https://dummyimage.com/150x150/eee/999&text=K" class="w-full h-full object-cover">
                                             <?php endif; ?>
                                         </div>
                                         <h4 class="font-bold text-lg text-gray-900 group-hover:text-[#125f4b] transition line-clamp-1"><?php the_title(); ?></h4>
