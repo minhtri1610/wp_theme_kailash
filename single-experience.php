@@ -335,7 +335,7 @@ $is_level_1 = ($post_parent_id == 0);
                 </div>
 
                 <div>
-                    <h2 class="text-2xl font-bold mb-8 tracking-wide text-[#aa7d59] border-b border-b-[#dcdcdc] pb-2.5">
+                    <h2 class="text-2xl md:text-3xl font-bold mb-8 tracking-wide text-[#aa7d59] border-b border-b-[#dcdcdc] pb-2.5">
                         <?php pll_e('Dự án tiêu biểu'); ?>
                     </h2>
                     
