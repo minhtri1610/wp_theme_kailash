@@ -383,35 +383,45 @@ add_action( 'save_post', 'kailash_save_insight_meta' );
  */
 function kailash_add_custom_roles() {
 
+    // 1. Giữ lại Role "Knowledge Editor" nếu cần dùng
+    // (Xóa và tạo lại để đảm bảo cập nhật quyền mới nhất nếu có thay đổi)
     remove_role( 'knowledge_editor' );
-    
-    // 1. Tạo Role mới: "Knowledge Editor" (Người biên tập Kiến thức)
     add_role( 'knowledge_editor', 'Editor guest', array(
-        'read'         => true,  // Được vào trang quản trị
-        'upload_files' => true,  // Được up ảnh
-        
-        // Các quyền riêng của Knowledge
-        'edit_knowledges'             => true,
-        'edit_others_knowledges'      => true,
-        'publish_knowledges'          => true,
-        'read_private_knowledges'     => true,
-        'delete_knowledges'           => true,
-        'delete_others_knowledges'    => true,
-        'delete_published_knowledges' => true,
-        'edit_published_knowledges'   => true,
+        'read'         => true,
+        'upload_files' => true,
     ));
 
-    // 2. Cấp quyền này cho Administrator (Bắt buộc, nếu không Admin sẽ mất quyền)
-    $admin_role = get_role( 'administrator' );
-    if ( $admin_role ) {
-        $admin_role->add_cap( 'edit_knowledges' );
-        $admin_role->add_cap( 'edit_others_knowledges' );
-        $admin_role->add_cap( 'publish_knowledges' );
-        $admin_role->add_cap( 'read_private_knowledges' );
-        $admin_role->add_cap( 'delete_knowledges' );
-        $admin_role->add_cap( 'delete_others_knowledges' );
-        $admin_role->add_cap( 'delete_published_knowledges' );
-        $admin_role->add_cap( 'edit_published_knowledges' );
+    // 2. Lấy danh sách TẤT CẢ các role hiện có trên hệ thống
+    global $wp_roles;
+    if ( ! isset( $wp_roles ) ) {
+        $wp_roles = new WP_Roles();
+    }
+    $all_roles = $wp_roles->get_names();
+
+    // 3. Phân quyền cho từng role
+    foreach ( $all_roles as $role_key => $role_name ) {
+        $role_obj = get_role( $role_key );
+        if ( ! $role_obj ) continue;
+
+        // --- Cấp quyền CƠ BẢN cho TẤT CẢ user (để ai cũng thấy menu và đăng bài được) ---
+        $role_obj->add_cap( 'read' ); // Đảm bảo quyền đọc
+        $role_obj->add_cap( 'upload_files' ); // Cho phép upload ảnh
+        
+        // Quyền liên quan đến Knowledge
+        $role_obj->add_cap( 'edit_knowledges' );           // Thấy menu "Knowledge", tạo bài mới
+        $role_obj->add_cap( 'publish_knowledges' );        // Đăng bài trực tiếp (không cần duyệt)
+        $role_obj->add_cap( 'edit_published_knowledges' ); // Sửa bài đã đăng (của chính mình)
+        $role_obj->add_cap( 'delete_knowledges' );         // Xóa bài (của chính mình)
+        $role_obj->add_cap( 'delete_published_knowledges' ); // Xóa bài đã đăng (của chính mình - cần thiết để 'move to trash')
+
+        // --- Cấp quyền QUẢN LÝ (Full quyền) cho các role cao cấp ---
+        // Bao gồm: Administrator, Editor, và role custom Knowledge Editor
+        if ( in_array( $role_key, array( 'administrator', 'editor', 'knowledge_editor' ) ) ) {
+            $role_obj->add_cap( 'edit_others_knowledges' );      // Sửa bài người khác
+            $role_obj->add_cap( 'delete_others_knowledges' );    // Xóa bài người khác
+            $role_obj->add_cap( 'read_private_knowledges' );     // Đọc bài riêng tư
+            //$role_obj->add_cap( 'delete_published_knowledges' ); // Đã add ở trên
+        }
     }
 }
 // Hook vào 'admin_init' để chạy lệnh này

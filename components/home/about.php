@@ -13,7 +13,7 @@
             </div>
 
             <div class="view-about view-white flex justify-center md:justify-end items-end mr-0 md:mr-[0rem] link">
-                <a href="<?php echo site_url('/gioi-thieu'); ?>" class="text-white border-b border-white pb-1 hover:text-gray-200 transition-colors">
+                <a href="<?php echo site_url('/ve-chung-toi'); ?>" class="text-white border-b border-white pb-1 hover:text-gray-200 transition-colors">
                     <?php pll_e('Xem chi tiết'); ?>
                 </a>
             </div>
@@ -31,7 +31,7 @@
     <div class="list-about container mx-auto -mt-10 md:mt-0 relative z-20">
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-3">
             
-            <a href="<?php echo site_url('/gioi-thieu'); ?>" class="col-span-1 ml-0 md:-ml-[12px] group overflow-hidden rounded-lg md:rounded-none">
+            <a href="<?php echo site_url('/ve-chung-toi'); ?>" class="col-span-1 ml-0 md:-ml-[12px] group overflow-hidden rounded-lg md:rounded-none">
                 <div class="item-message relative h-full
                 after:content-[''] after:absolute after:inset-0 after:bg-white/20 after:opacity-0 after:transition-all after:duration-300 group-hover:after:opacity-100">
                     <img class="w-full block h-[200px] md:h-[270px] object-cover transition-transform duration-500 group-hover:scale-105" src="<?php echo get_template_directory_uri(); ?>/assets/images/home/about/about_us01.jpg" alt="">
@@ -41,7 +41,7 @@
                 </div>
             </a>
 
-            <a href="<?php echo site_url('/gioi-thieu'); ?>" class="col-span-1 group overflow-hidden rounded-lg md:rounded-none">
+            <a href="<?php echo site_url('/ve-chung-toi'); ?>" class="col-span-1 group overflow-hidden rounded-lg md:rounded-none">
                 <div class="item-message relative h-full
                 after:content-[''] after:absolute after:inset-0 after:bg-white/20 after:opacity-0 after:transition-all after:duration-300 group-hover:after:opacity-100">
                     <img class="w-full block h-[200px] md:h-[270px] object-cover transition-transform duration-500 group-hover:scale-105" src="<?php echo get_template_directory_uri(); ?>/assets/images/home/about/about_us02.jpg" alt="">
@@ -51,7 +51,7 @@
                 </div>
             </a>
 
-            <a href="<?php echo site_url('/gioi-thieu'); ?>" class="col-span-1 group overflow-hidden rounded-lg md:rounded-none">
+            <a href="<?php echo site_url('/ve-chung-toi'); ?>" class="col-span-1 group overflow-hidden rounded-lg md:rounded-none">
                 <div class="item-message relative h-full
                 after:content-[''] after:absolute after:inset-0 after:bg-white/20 after:opacity-0 after:transition-all after:duration-300 group-hover:after:opacity-100">
                     <img class="w-full block h-[200px] md:h-[270px] object-cover transition-transform duration-500 group-hover:scale-105" src="<?php echo get_template_directory_uri(); ?>/assets/images/home/about/about_us03.jpg" alt="">
