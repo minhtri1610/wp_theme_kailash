@@ -58,18 +58,13 @@ if (!empty($keyword)) {
 }
 
 // 3. TẠO QUERY CHÍNH (GIỮ NGUYÊN LOGIC)
-$meta_query = array(
-    'relation' => 'OR',
-    array('key' => 'sap_xep', 'compare' => 'EXISTS'),
-    array('key' => 'sap_xep', 'compare' => 'NOT EXISTS'),
-);
+$meta_query = array();
 
 if (!empty($experience_filter)) {
-    $temp_meta_query = $meta_query;
-    $meta_query = array(
-        'relation' => 'AND',
-        array('key' => 'assigned_experience_parent', 'value' => '"' . $experience_filter . '"', 'compare' => 'LIKE'),
-        $temp_meta_query
+    $meta_query[] = array(
+        'key' => 'assigned_experience_parent',
+        'value' => '"' . $experience_filter . '"',
+        'compare' => 'LIKE'
     );
 }
 
@@ -86,9 +81,9 @@ $args = array(
             'terms' => pll_current_language(),
         ),
     ),
-    'kailash_custom_sort' => true,
-    'orderby' => 'date',
-    'order' => 'DESC'
+    'kailash_sort_by_position' => true,
+    'orderby' => 'menu_order',
+    'order' => 'ASC'
 );
 
 if ($has_search) {
