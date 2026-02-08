@@ -39,7 +39,7 @@ if (is_post_type_archive('knowledge') && !is_page()) {
     <div class="container mx-auto px-4">
 
         <div class="text-left mb-8 md:mb-12">
-            <h2 class="text-3xl md:text-4xl font-semibold text-black mb-4 md:mb-6"><?php pll_e('Ấn phẩm') ?> </h2>
+            <h2 class="text-3xl md:text-4xl font-semibold text-black mb-4 md:mb-6"><?php pll_e('Ấn Phẩm') ?> </h2>
 
             <div class="max-w-3xl text-left text-gray-600 text-base md:text-lg">
                 <?php
