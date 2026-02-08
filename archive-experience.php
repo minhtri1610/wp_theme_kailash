@@ -13,7 +13,7 @@ get_header();
     <div class="container mx-auto c-list-experience mb-12">
 
         <div class="head-list-experience">
-            <h2 class="text-3xl md:text-4xl font-semibold text-black my-8 md:my-[3rem]"><?php pll_e('Kinh nghiệm') ?>
+            <h2 class="text-3xl md:text-4xl font-semibold text-black my-8 md:my-[3rem]"><?php pll_e('Kinh Nghiệm') ?>
             </h2>
         </div>
 
