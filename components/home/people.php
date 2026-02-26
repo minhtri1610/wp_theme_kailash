@@ -28,10 +28,9 @@
 
         <div class="wapper-info-people mt-10 lg:mt-[5rem] px-4 lg:px-0">
             <div class="content-info-people flex flex-col items-center justify-center text-center lg:text-left">
-                <h2 class="text-4xl md:text-5xl text-white font-extrabold mb-4">Tiêu đề</h2>
-                <div class="content-info text-white p-0 lg:p-5 text-base md:text-lg max-w-prose">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus fuga libero dignissimos labore, magnam commodi possimus eos vel? Dicta perspiciatis quisquam accusantium impedit veniam delectus ad expedita facilis fugit ratione.
-                </div>
+                <h2 class="text-4xl md:text-5xl text-white font-extrabold mb-4"><?php pll_e('Cộng sự') ?> </h2>
+                <!-- <div class="content-info text-white p-0 lg:p-5 text-base md:text-lg max-w-prose">
+                </div> -->
             </div>
         </div>
     </div>
