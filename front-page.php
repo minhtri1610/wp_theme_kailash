@@ -72,7 +72,7 @@ $action_url = !empty($pages) ? get_permalink($pages[0]) : home_url('/');
 
     <?php get_template_part('components/home/recent-work'); ?>
 
-    <?php get_template_part('components/home/about'); ?>
+    <!-- <?php get_template_part('components/home/about'); ?> -->
 
 </main>
 
