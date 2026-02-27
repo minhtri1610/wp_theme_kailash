@@ -19,7 +19,8 @@ $posts = $insight_query->posts; // Lấy mảng các bài viết
 
 <section class="container mt-[1em]" id="insight">
     <h2 class="text-4xl font-bold text-black mb-6">
-        <?php (function_exists('pll_e')) ? pll_e('Góc nhìn') : _e('Góc nhìn', 'kailash'); ?></h2>
+        <?php (function_exists('pll_e')) ? pll_e('Góc nhìn') : _e('Góc nhìn', 'kailash'); ?>
+    </h2>
 
     <?php if (!empty($posts)): ?>
 
@@ -61,7 +62,7 @@ $posts = $insight_query->posts; // Lấy mảng các bài viết
                         $link_item = get_post_meta($post_item->ID, '_insight_link', true);
                         $title_item = get_the_title($post_item->ID);
                         ?>
-                        <a class="insight-item relative block h-full min-h-[200px] group overflow-hidden"
+                        <a class="insight-item relative block h-[250px] md:h-full group overflow-hidden"
                             href="<?php echo esc_url($link_item ? $link_item : '#'); ?>">
                             <?php if ($img_item): ?>
                                 <img src="<?php echo esc_url($img_item); ?>" alt="<?php echo esc_attr($title_item); ?>"
@@ -74,7 +75,7 @@ $posts = $insight_query->posts; // Lấy mảng các bài viết
                                 <h3 class="text-white pl-2 font-semibold"><?php echo esc_html($title_item); ?></h3>
                             </div>
                         </a>
-                    <?php
+                        <?php
                     endif;
                 endfor;
                 ?>
