@@ -24,7 +24,7 @@ $posts = $insight_query->posts; // Lấy mảng các bài viết
 
     <?php if (!empty($posts)): ?>
 
-        <div class="wapper-insight grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div class="wapper-insight flex flex-col md:flex-row gap-4 md:gap-[40px]">
 
             <?php if (isset($posts[0])):
                 $post_0 = $posts[0];
@@ -32,7 +32,8 @@ $posts = $insight_query->posts; // Lấy mảng các bài viết
                 $link_0 = get_post_meta($post_0->ID, '_insight_link', true);
                 $title_0 = get_the_title($post_0->ID);
                 ?>
-                <div class="left-insight col-span-1 md:col-span-2 h-[300px] md:h-[400px] lg:h-[500px]">
+                <div
+                    class="left-insight w-full md:w-[calc(((100%_-_(40px_*_(3_-_1)))_/_3)*2_+_40px)] h-[300px] md:h-[400px] lg:h-[500px]">
                     <a class="insight-item relative h-full block group overflow-hidden"
                         href="<?php echo esc_url($link_0 ? $link_0 : '#'); ?>">
                         <?php if ($img_0): ?>
@@ -51,7 +52,8 @@ $posts = $insight_query->posts; // Lấy mảng các bài viết
             <?php endif; ?>
 
 
-            <div class="right-insight grid grid-rows-2 gap-4 h-full">
+            <div
+                class="right-insight w-full md:w-[calc((100%_-_(40px_*_(3_-_1)))_/_3)] flex flex-col gap-4 md:gap-[40px] md:h-[400px] lg:h-[500px]">
 
                 <?php
                 // Loop thủ công cho bài số 2 và số 3
@@ -62,7 +64,7 @@ $posts = $insight_query->posts; // Lấy mảng các bài viết
                         $link_item = get_post_meta($post_item->ID, '_insight_link', true);
                         $title_item = get_the_title($post_item->ID);
                         ?>
-                        <a class="insight-item relative block h-[250px] md:h-full group overflow-hidden"
+                        <a class="insight-item relative block h-[250px] md:h-[calc((100%_-_40px)_/_2)] group overflow-hidden"
                             href="<?php echo esc_url($link_item ? $link_item : '#'); ?>">
                             <?php if ($img_item): ?>
                                 <img src="<?php echo esc_url($img_item); ?>" alt="<?php echo esc_attr($title_item); ?>"
@@ -86,8 +88,9 @@ $posts = $insight_query->posts; // Lấy mảng các bài viết
 
     <?php else: ?>
 
-        <div class="wapper-insight grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div class="left-insight col-span-1 md:col-span-2 h-full">
+        <div class="wapper-insight flex flex-col md:flex-row gap-4 md:gap-[40px]">
+            <div
+                class="left-insight w-full md:w-[calc(((100%_-_(40px_*_(3_-_1)))_/_3)*2_+_40px)] h-[300px] md:h-[400px] lg:h-[500px]">
                 <a class="insight-item relative h-full block" href="#">
                     <img src="<?php echo get_template_directory_uri(); ?>/assets/images/insights/insight-1.jpg" alt=""
                         class="w-full h-full object-cover">
@@ -96,8 +99,10 @@ $posts = $insight_query->posts; // Lấy mảng các bài viết
                     </div>
                 </a>
             </div>
-            <div class="right-insight grid grid-rows-2 gap-4">
-                <div class="w-full h-full bg-gray-200 flex items-center justify-center">Please add "Insight" posts in Admin
+            <div
+                class="right-insight w-full md:w-[calc((100%_-_(40px_*_(3_-_1)))_/_3)] flex flex-col gap-4 md:gap-[40px] md:h-[400px] lg:h-[500px]">
+                <div class="w-full h-[250px] md:h-full bg-gray-200 flex items-center justify-center">Please add "Insight"
+                    posts in Admin
                 </div>
             </div>
         </div>
