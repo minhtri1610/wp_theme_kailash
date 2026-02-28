@@ -40,7 +40,7 @@
                     <?php echo esc_html($display_date); ?>
                 </h3>
                 
-                <a href="<?php the_permalink(); ?>" class="text-base md:text-lg font-bold text-black leading-snug group-hover:text-[#125f4b] transition-colors block line-clamp-2">
+                <a href="<?php the_permalink(); ?>" class="capitalize text-base md:text-lg font-bold text-black leading-snug group-hover:text-[#125f4b] transition-colors block line-clamp-2">
                     <?php the_title(); ?>
                 </a>
             </div>
