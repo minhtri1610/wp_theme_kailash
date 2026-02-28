@@ -59,7 +59,7 @@ if ($company_address) {
     <!-- 1. HERO BANNER & BREADCRUMB -->
     <div class="relative w-full h-[400px] bg-gray-900 overflow-hidden">
         <?php if ( has_post_thumbnail() ) : ?>
-            <?php the_post_thumbnail('full', ['class' => 'w-full h-full object-cover opacity-60']); ?>
+            <?php the_post_thumbnail('full', ['class' => 'w-full h-full object-fill opacity-60']); ?>
         <?php else : ?>
             <img src="<?php echo get_template_directory_uri(); ?>/assets/images/about-us.jpg" class="w-full h-full object-cover opacity-60">
         <?php endif; ?>
