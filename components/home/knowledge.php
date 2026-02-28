@@ -40,7 +40,7 @@
                             $sub_exps = get_field('knowledge_related_experience');
                         ?>
                             <div class="kn-item flex flex-col border-b border-gray-300 py-3 md:py-4 last:border-0">
-                                <a class="text-[#0e0e0e] hover:text-[#125f4b] text-lg md:text-xl font-medium md:font-normal leading-snug" href="<?php the_permalink(); ?>">
+                                <a class="text-[#0e0e0e] hover:text-[#125f4b] text-lg md:text-base font-medium md:font-normal leading-snug" href="<?php the_permalink(); ?>">
                                     <?php the_title(); ?>
                                 </a>
                                 
