@@ -26,7 +26,7 @@ $action_url = !empty($pages) ? get_permalink($pages[0]) : home_url('/');
 
     <?php get_template_part('template-parts/banner'); ?>
 
-    <section id="search" class="container relative h-auto md:h-[180px] z-20">
+    <section id="search" class="container relative h-auto md:h-[90px] z-20">
 
         <div
             class="wrapper-search grid grid-cols-1 md:grid-cols-3 bg-[#2b2b2b] gap-0 md:gap-1 relative md:absolute mt-[-30px] md:mt-0 top-0 md:-top-[60px] w-full shadow-xl z-10 rounded-lg md:rounded-none overflow-hidden md:overflow-visible">

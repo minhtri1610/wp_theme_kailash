@@ -3487,6 +3487,14 @@ linear;
     height: calc((100% - 40px) / 2);
   }
 
+  .md\:h-\[0px\] {
+    height: 0px;
+  }
+
+  .md\:h-\[90px\] {
+    height: 90px;
+  }
+
   .md\:max-h-\[48vw\] {
     max-height: 48vw;
   }
