@@ -74,7 +74,7 @@ $posts = $insight_query->posts; // Lấy mảng các bài viết
                             <?php endif; ?>
 
                             <div class="ins-title absolute bottom-0 left-0 text-2xl bg-[#00000062] p-2 w-full">
-                                <h3 class="text-white pl-2 font-semibold"><?php echo esc_html($title_item); ?></h3>
+                                <h4 class="text-white pl-2 font-semibold text-base"><?php echo esc_html($title_item); ?></h4>
                             </div>
                         </a>
                         <?php
