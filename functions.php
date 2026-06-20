@@ -525,3 +525,56 @@ require get_template_directory() . '/inc/polylang.php';
 
 // breadcrum
 require get_template_directory() . '/inc/breadcrumb.php';
+
+/**
+ * Insert dynamic SEO meta tags to head hook
+ */
+function kailash_custom_seo_meta_tags()
+{
+    // Only output meta on frontend
+    if (is_admin()) {
+        return;
+    }
+
+    $description = get_bloginfo('description'); // Fallback description
+    $title = get_bloginfo('name');
+    $url = home_url('/');
+    $image = get_template_directory_uri() . '/assets/images/logo-crop.png'; // Fallback image
+
+    if (is_singular()) {
+        global $post;
+        $title = get_the_title($post->ID);
+        $url = get_permalink($post->ID);
+
+        // Get post content for description
+        if (!empty($post->post_excerpt)) {
+            $description = wp_strip_all_tags($post->post_excerpt);
+        } else {
+            $description = wp_strip_all_tags(wp_trim_words($post->post_content, 30));
+        }
+
+        // Get featured image
+        if (has_post_thumbnail($post->ID)) {
+            $image = get_the_post_thumbnail_url($post->ID, 'full');
+        }
+    }
+
+    // Output meta tags
+    echo "\n" . '<!-- Custom SEO Meta Tags -->' . "\n";
+    echo '<meta name="description" content="' . esc_attr($description) . '">' . "\n";
+    echo '<link rel="canonical" href="' . esc_url($url) . '">' . "\n";
+
+    // Open Graph
+    echo '<meta property="og:type" content="' . (is_singular() ? 'article' : 'website') . '">' . "\n";
+    echo '<meta property="og:title" content="' . esc_attr($title) . '">' . "\n";
+    echo '<meta property="og:description" content="' . esc_attr($description) . '">' . "\n";
+    echo '<meta property="og:url" content="' . esc_url($url) . '">' . "\n";
+    echo '<meta property="og:image" content="' . esc_url($image) . '">' . "\n";
+
+    // Twitter Card
+    echo '<meta name="twitter:card" content="summary_large_image">' . "\n";
+    echo '<meta name="twitter:title" content="' . esc_attr($title) . '">' . "\n";
+    echo '<meta name="twitter:description" content="' . esc_attr($description) . '">' . "\n";
+    echo '<meta name="twitter:image" content="' . esc_url($image) . '">' . "\n";
+}
+add_action('wp_head', 'kailash_custom_seo_meta_tags', 1);

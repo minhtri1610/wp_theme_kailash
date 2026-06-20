@@ -11,7 +11,8 @@
 
 $settings_page = get_page_by_path('theme-settings');
 $option_id = $settings_page ? $settings_page->ID : false;
-if (!$option_id) $option_id = get_option('page_on_front'); // Fallback
+if (!$option_id)
+	$option_id = get_option('page_on_front'); // Fallback
 
 // Lấy ngôn ngữ hiện tại
 $lang = function_exists('pll_current_language') ? pll_current_language() : 'vi';
@@ -21,125 +22,139 @@ $company_name = get_field('company_name', $option_id);
 $social_facebook = get_field('social_facebook', $option_id);
 $social_linkedin = get_field('link_linkedin', $option_id);
 ?>
-	<footer id="site-footer" class="bg-gradient-to-b from-[#016549] to-[#003425] pt-10 relative">
-    
-		<div class="wapper-footer container mx-auto px-4 md:px-0">
-			
-			<div class="list-menu border-b border-b-[#C4C4C4]/20 pb-4 md:pb-0">
-				<?php
-					wp_nav_menu(array(
-						'menu_id'        => 'footer-menu',
-						'theme_location' => 'footer_menu',
-						'container'      => false,
-						// RESPONSIVE MENU:
-						// 1. flex-col: Mobile xếp dọc
-						// 2. md:flex-row: Desktop xếp ngang
-						// 3. space-y-3: Mobile cách nhau dọc
-						// 4. md:space-y-0: Desktop bỏ cách dọc
-						// 5. md:space-x-6: Desktop cách nhau ngang
-						'menu_class'     => 'top-menu flex flex-col md:flex-row content-center justify-start space-y-3 md:space-y-0 md:space-x-6 text-white text-sm font-medium',
-						'fallback_cb'    => false,
-					));
-				?>
-			</div>
+<footer id="site-footer" class="bg-gradient-to-b from-[#016549] to-[#003425] pt-10 relative">
 
-			<div class="list-social-media mt-6 md:mt-3">
-				<ul class="flex flex-row">
-					<?php if($social_facebook): ?>
+	<div class="wapper-footer container mx-auto px-4 md:px-0">
+
+		<div class="list-menu border-b border-b-[#C4C4C4]/20 pb-4 md:pb-0">
+			<?php
+			wp_nav_menu(array(
+				'menu_id' => 'footer-menu',
+				'theme_location' => 'footer_menu',
+				'container' => false,
+				// RESPONSIVE MENU:
+				// 1. flex-col: Mobile xếp dọc
+				// 2. md:flex-row: Desktop xếp ngang
+				// 3. space-y-3: Mobile cách nhau dọc
+				// 4. md:space-y-0: Desktop bỏ cách dọc
+				// 5. md:space-x-6: Desktop cách nhau ngang
+				'menu_class' => 'top-menu flex flex-col md:flex-row content-center justify-start space-y-3 md:space-y-0 md:space-x-6 text-white text-sm font-medium',
+				'fallback_cb' => false,
+			));
+			?>
+		</div>
+
+		<div class="list-social-media mt-6 md:mt-3">
+			<ul class="flex flex-row">
+				<?php if ($social_facebook): ?>
 					<li class="mr-4">
-						<a href="<?php echo esc_url($social_facebook); ?>" target="_blank" class="block hover:-translate-y-1 transition-transform">
+						<a href="<?php echo esc_url($social_facebook); ?>" target="_blank"
+							class="block hover:-translate-y-1 transition-transform">
 							<i class="fa-brands fa-facebook text-[#dfdfdf] hover:text-white text-3xl"></i>
 						</a>
 					</li>
-					<?php endif; ?>
+				<?php endif; ?>
 
-					<?php if($social_linkedin): ?>
+				<?php if ($social_linkedin): ?>
 					<li>
-						<a href="<?php echo esc_url($social_linkedin); ?>" target="_blank" class="block hover:-translate-y-1 transition-transform">
+						<a href="<?php echo esc_url($social_linkedin); ?>" target="_blank"
+							class="block hover:-translate-y-1 transition-transform">
 							<i class="fa-brands fa-linkedin text-[#dfdfdf] hover:text-white text-3xl"></i>
 						</a>
 					</li>
-					<?php endif; ?>
-				</ul>
-			</div>
-
-			<div class="footer-info my-8 md:my-10">
-
-				<div class="grid grid-cols-1 md:grid-cols-5 gap-2 md:gap-4 mb-4 md:mb-5">
-					<div class="">
-						<a class="text-white text-sm hover:text-slate-300 block py-1 md:py-0" href="<?php echo site_url('/chinh-sach-trang-web'); ?>"><?php pll_e('Chính sách trang web'); ?></a>
-					</div>
-					<div class="col-span-1 md:col-span-2">
-						<a class="text-white text-sm hover:text-slate-300 block py-1 md:py-0" href="<?php echo site_url('/chinh-sach-co-ban-ve-bao-mat-thong-tin'); ?>"><?php pll_e('Chính sách cơ bản về bảo mật thông tin'); ?></a>
-					</div>
-				</div>
-
-				<div class="grid grid-cols-1 md:grid-cols-5 gap-2 md:gap-4 mb-4 md:mb-5">
-					<div class="">
-						<a class="text-white text-sm hover:text-slate-300 block py-1 md:py-0" href="<?php echo site_url('/tuyen-bo-mien-tru-trach-nhiem'); ?>"><?php pll_e('Tuyên bố miễn trừ trách nhiệm'); ?></a>
-					</div>
-					<div class="col-span-1 md:col-span-2">
-						<a class="text-white text-sm hover:text-slate-300 block py-1 md:py-0" href="<?php echo site_url('/chinh-sach-bao-mat-danh-cho-chu-the-du-lieu'); ?>"><?php pll_e('Chính sách bảo mật dữ liệu dành cho chủ thể dữ liệu'); ?></a>
-					</div>
-				</div>
-
-				<div class="grid grid-cols-1 md:grid-cols-5 gap-2 md:gap-4 mb-4 md:mb-5">
-					<div class="">
-						<a class="text-white text-sm hover:text-slate-300 block py-1 md:py-0" href="<?php echo site_url('/chinh-sach-cookie'); ?>"><?php pll_e('Chính sách cookie'); ?></a>
-					</div>
-					<div class="col-span-1 md:col-span-2">
-						<a class="text-white text-sm hover:text-slate-300 block py-1 md:py-0" href="<?php echo site_url('/thong-tin-thue-va-xuat-hoa-don-cua-kailash'); ?>"><?php pll_e('Thông tin Thuế và Xuất Hóa đơn của Kailash'); ?></a>
-					</div>
-				</div>
-
-				<div class="grid grid-cols-1 md:grid-cols-5 gap-2 md:gap-4 mb-4 md:mb-5">
-					<div class="">
-						<a class="text-white text-sm hover:text-slate-300 block py-1 md:py-0" href="<?php echo site_url('/thong-tin-phap-ly'); ?>"><?php pll_e('Thông tin pháp lý'); ?></a>
-					</div>
-					<div class="col-span-1 md:col-span-2">
-						<a class="text-white text-sm hover:text-slate-300 block py-1 md:py-0" href="<?php echo site_url('/quan-diem-cua-kailash-ve-xung-dot-loi-ich'); ?>"><?php pll_e('Cách tiếp cận của công ty đối với xung đột lợi ích'); ?></a>
-					</div>
-				</div>
-
-				<div class="grid grid-cols-1 md:grid-cols-5 gap-2 md:gap-4 mb-4 md:mb-5">
-					<div class="">
-						<a class="text-white text-sm hover:text-slate-300 block py-1 md:py-0" href="<?php echo site_url('/chinh-sach-ai-doanh-nghiep'); ?>"><?php pll_e('Chính sách AI của doanh nghiệp'); ?></a>
-					</div>
-					<div class="col-span-1 md:col-span-2">
-						<a class="text-white text-sm hover:text-slate-300 block py-1 md:py-0" href="<?php echo site_url('/chinh-sach-bao-ve-thong-tin-ca-nhan'); ?>"><?php pll_e('Chính sách bảo vệ thông tin cá nhân'); ?></a>
-					</div>
-				</div>
-
-			</div>
-
-			<div class="copyright text-center pb-6 md:pb-3 border-t border-white/10 pt-4 md:border-none md:pt-0">
-				<p class="text-[#dfdfdf] text-xs md:text-sm">© 2025 <?php echo $company_name ? esc_html($company_name) : 'Kailash'; ?>. All rights reserved.</p>
-			</div>
+				<?php endif; ?>
+			</ul>
 		</div>
-		
-		<div class="footer-arrows"></div>
 
-		<a id="backToTop" href="#" class="fixed right-10 z-50 hidden p-3 transition-opacity duration-300"
-    	style="bottom: 20px;">Page Top</a>
-	</footer>
+		<div class="footer-info my-8 md:my-10">
 
-	
+			<div class="grid grid-cols-1 md:grid-cols-5 gap-2 md:gap-4 mb-4 md:mb-5">
+				<div class="">
+					<a class="text-white text-sm hover:text-slate-300 block py-1 md:py-0"
+						href="<?php echo site_url('/chinh-sach-trang-web'); ?>"><?php pll_e('Chính sách trang web'); ?></a>
+				</div>
+				<div class="col-span-1 md:col-span-2">
+					<a class="text-white text-sm hover:text-slate-300 block py-1 md:py-0"
+						href="<?php echo site_url('/chinh-sach-co-ban-ve-bao-mat-thong-tin'); ?>"><?php pll_e('Chính sách cơ bản về bảo mật thông tin'); ?></a>
+				</div>
+			</div>
+
+			<div class="grid grid-cols-1 md:grid-cols-5 gap-2 md:gap-4 mb-4 md:mb-5">
+				<div class="">
+					<a class="text-white text-sm hover:text-slate-300 block py-1 md:py-0"
+						href="<?php echo site_url('/tuyen-bo-mien-tru-trach-nhiem'); ?>"><?php pll_e('Tuyên bố miễn trừ trách nhiệm'); ?></a>
+				</div>
+				<div class="col-span-1 md:col-span-2">
+					<a class="text-white text-sm hover:text-slate-300 block py-1 md:py-0"
+						href="<?php echo site_url('/chinh-sach-bao-mat-danh-cho-chu-the-du-lieu'); ?>"><?php pll_e('Chính sách bảo mật dữ liệu dành cho chủ thể dữ liệu'); ?></a>
+				</div>
+			</div>
+
+			<div class="grid grid-cols-1 md:grid-cols-5 gap-2 md:gap-4 mb-4 md:mb-5">
+				<div class="">
+					<a class="text-white text-sm hover:text-slate-300 block py-1 md:py-0"
+						href="<?php echo site_url('/chinh-sach-cookie'); ?>"><?php pll_e('Chính sách cookie'); ?></a>
+				</div>
+				<div class="col-span-1 md:col-span-2">
+					<a class="text-white text-sm hover:text-slate-300 block py-1 md:py-0"
+						href="<?php echo site_url('/thong-tin-thue-va-xuat-hoa-don-cua-kailash'); ?>"><?php pll_e('Thông tin Thuế và Xuất Hóa đơn của Kailash'); ?></a>
+				</div>
+			</div>
+
+			<div class="grid grid-cols-1 md:grid-cols-5 gap-2 md:gap-4 mb-4 md:mb-5">
+				<div class="">
+					<a class="text-white text-sm hover:text-slate-300 block py-1 md:py-0"
+						href="<?php echo site_url('/thong-tin-phap-ly'); ?>"><?php pll_e('Thông tin pháp lý'); ?></a>
+				</div>
+				<div class="col-span-1 md:col-span-2">
+					<a class="text-white text-sm hover:text-slate-300 block py-1 md:py-0"
+						href="<?php echo site_url('/quan-diem-cua-kailash-ve-xung-dot-loi-ich'); ?>"><?php pll_e('Cách tiếp cận của công ty đối với xung đột lợi ích'); ?></a>
+				</div>
+			</div>
+
+			<div class="grid grid-cols-1 md:grid-cols-5 gap-2 md:gap-4 mb-4 md:mb-5">
+				<div class="">
+					<a class="text-white text-sm hover:text-slate-300 block py-1 md:py-0"
+						href="<?php echo site_url('/chinh-sach-ai-doanh-nghiep'); ?>"><?php pll_e('Chính sách AI của doanh nghiệp'); ?></a>
+				</div>
+				<div class="col-span-1 md:col-span-2">
+					<a class="text-white text-sm hover:text-slate-300 block py-1 md:py-0"
+						href="<?php echo site_url('/chinh-sach-bao-ve-thong-tin-ca-nhan'); ?>"><?php pll_e('Chính sách bảo vệ thông tin cá nhân'); ?></a>
+				</div>
+			</div>
+
+		</div>
+
+		<div class="copyright text-center pb-6 md:pb-3 border-t border-white/10 pt-4 md:border-none md:pt-0">
+			<p class="text-[#dfdfdf] text-xs md:text-sm">© 2025
+				<?php echo $company_name ? esc_html($company_name) : 'Kailash'; ?>. All rights reserved.</p>
+		</div>
+	</div>
+
+	<div class="footer-arrows"></div>
+
+	<a id="backToTop" href="#" class="fixed right-10 z-50 hidden p-3 transition-opacity duration-300"
+		style="bottom: 20px;">Page Top</a>
+</footer>
+
+
 </div><!-- #page -->
 
 <?php wp_footer(); ?>
 
-<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"
+	integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 
 <script type="text/javascript">
-    $(document).ready(function(){
-        $('.banner-header').slick({
+	$(document).ready(function () {
+		$('.banner-header').slick({
 			fade: true,
 			dotsClass: 'slick-dots',
 			arrows: false,
 			autoplay: true,
 			autoplaySpeed: 3000,
-        });
+		});
 
 		$('#slides-top-people').slick({
 			fade: true,
@@ -147,7 +162,7 @@ $social_linkedin = get_field('link_linkedin', $option_id);
 			arrows: false,
 			autoplay: true,
 			autoplaySpeed: 1000,
-        });
+		});
 
 		$('#list-people').slick({
 			// --- CẤU HÌNH MẶC ĐỊNH (DESKTOP) ---
@@ -158,7 +173,7 @@ $social_linkedin = get_field('link_linkedin', $option_id);
 			autoplaySpeed: 3000, // Nên để chậm lại (3s) để khách kịp đọc, 1000ms là quá nhanh
 			arrows: true,        // Hiện mũi tên điều hướng trên desktop
 			dots: false,
-			
+
 			// --- CẤU HÌNH RESPONSIVE ---
 			responsive: [
 				{
@@ -219,10 +234,10 @@ $social_linkedin = get_field('link_linkedin', $option_id);
 				}
 			]
 		});
-		
-		
-    });
-	(function() {
+
+
+	});
+	(function () {
 		const animateNumber = (element, target, duration) => {
 			let startTime;
 			const initialNumber = 0;
@@ -230,18 +245,18 @@ $social_linkedin = get_field('link_linkedin', $option_id);
 			const easingFunction = t => 1 - Math.pow(1 - t, 4);
 
 			const animate = time => {
-			if (!startTime) startTime = time;
-			const elapsedTime = time - startTime;
-			const t = Math.min(elapsedTime / duration, 1);
-			const newValue = initialNumber + (target - initialNumber) * easingFunction(t);
+				if (!startTime) startTime = time;
+				const elapsedTime = time - startTime;
+				const t = Math.min(elapsedTime / duration, 1);
+				const newValue = initialNumber + (target - initialNumber) * easingFunction(t);
 
-			element.textContent = Math.round(newValue);
+				element.textContent = Math.round(newValue);
 
-			if (elapsedTime < duration) {
-				requestAnimationFrame(animate);
-			} else {
-				element.textContent = target;
-			}
+				if (elapsedTime < duration) {
+					requestAnimationFrame(animate);
+				} else {
+					element.textContent = target;
+				}
 			};
 
 			requestAnimationFrame(animate);
@@ -249,34 +264,34 @@ $social_linkedin = get_field('link_linkedin', $option_id);
 
 		const onIntersection = entries => {
 			entries.forEach(entry => {
-			if (entry.isIntersecting) {
-				const el = entry.target;
-				const finalNumber = parseInt(el.textContent, 10);
-				const animDuration = parseInt(el.getAttribute('duration'), 10) || 2000;
+				if (entry.isIntersecting) {
+					const el = entry.target;
+					const finalNumber = parseInt(el.textContent, 10);
+					const animDuration = parseInt(el.getAttribute('duration'), 10) || 2000;
 
-				animateNumber(el, finalNumber, animDuration);
-				observer.unobserve(el);
-			}
+					animateNumber(el, finalNumber, animDuration);
+					observer.unobserve(el);
+				}
 			});
 		};
 
 		const observer = new IntersectionObserver(onIntersection);
-		
+
 		document.addEventListener("DOMContentLoaded", () => {
 			document.querySelectorAll('[counter-element="number"]').forEach(el => {
-			observer.observe(el);
+				observer.observe(el);
 			});
 		});
 
-		document.addEventListener("DOMContentLoaded", function() {
-    
+		document.addEventListener("DOMContentLoaded", function () {
+
 			// 1. Lấy tất cả các tab link và tab content
 			const tabLinks = document.querySelectorAll(".tab-link");
 			const tabContents = document.querySelectorAll(".tab-content");
 
 			// Các class cho trạng thái Active (Đang chọn)
 			const activeClasses = ["text-[#125f4b]", "border-b-2", "border-[#125f4b]"];
-			
+
 			// Các class cho trạng thái Inactive (Không chọn)
 			const inactiveClasses = ["text-gray-500", "border-transparent", "hover:text-[#125f4b]", "hover:border-gray-300"];
 
@@ -316,7 +331,7 @@ $social_linkedin = get_field('link_linkedin', $option_id);
 	document.addEventListener('DOMContentLoaded', () => {
 		const backToTopBtn = document.getElementById('backToTop');
 		const footer = document.getElementById('site-footer');
-		
+
 		// Cấu hình khoảng cách
 		const defaultBottom = 20; // Cách đáy màn hình 20px khi ở trạng thái bình thường
 		const offsetFromFooter = 20; // Cách mép trên của footer 20px khi chạm footer
@@ -382,49 +397,54 @@ $social_linkedin = get_field('link_linkedin', $option_id);
 	});
 </script>
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-    // 1. Tìm vùng chứa menu mobile
-    const mobileMenu = document.getElementById('mobile-menu');
-    
-    if (mobileMenu) {
-        // 2. Lấy tất cả các li có menu con (WordPress tự thêm class .menu-item-has-children)
-        const itemsWithChildren = mobileMenu.querySelectorAll('.menu-item-has-children');
+	document.addEventListener('DOMContentLoaded', function () {
+		// 1. Tìm vùng chứa menu mobile
+		const mobileMenu = document.getElementById('mobile-menu');
 
-        itemsWithChildren.forEach(function(item) {
-            // 3. Tạo thẻ span chứa icon mũi tên
-            const arrowSpan = document.createElement('span');
-            arrowSpan.className = 'mobile-arrow-toggle';
-            // Sử dụng FontAwesome chevron-down
-            arrowSpan.innerHTML = '<i class="fa-solid fa-chevron-down"></i>'; 
-            
-            // 4. Chèn mũi tên vào trong thẻ li (nó sẽ nằm đè lên bên phải nhờ CSS absolute)
-            // item là thẻ <li>, ta append vào cuối thẻ li (ngang hàng với <a> và <ul>)
-            // Tuy nhiên để an toàn, ta insert trước submenu ul
-            const subMenu = item.querySelector('.sub-menu');
-            if(subMenu) {
-                item.insertBefore(arrowSpan, subMenu);
-            }
+		if (mobileMenu) {
+			// 2. Lấy tất cả các li có menu con (WordPress tự thêm class .menu-item-has-children)
+			const itemsWithChildren = mobileMenu.querySelectorAll('.menu-item-has-children');
 
-            // 5. Xử lý sự kiện Click vào mũi tên
-            arrowSpan.addEventListener('click', function(e) {
-                e.preventDefault(); // Ngăn chặn hành vi mặc định
-                e.stopPropagation(); // Ngăn sự kiện nổi bọt
-                
-                // Toggle class active cho mũi tên (để xoay)
-                this.classList.toggle('active');
-                
-                // Toggle hiện/ẩn menu con kế bên
-                if (subMenu) {
-                    if (subMenu.style.display === 'block') {
-                        subMenu.style.display = 'none';
-                    } else {
-                        subMenu.style.display = 'block';
-                    }
-                }
-            });
-        });
-    }
-});
+			itemsWithChildren.forEach(function (item) {
+				// 3. Tạo thẻ span chứa icon mũi tên
+				const arrowSpan = document.createElement('span');
+				arrowSpan.className = 'mobile-arrow-toggle';
+				// Sử dụng FontAwesome chevron-down
+				arrowSpan.innerHTML = '<i class="fa-solid fa-chevron-down"></i>';
+
+				// 4. Chèn mũi tên vào trong thẻ li (nó sẽ nằm đè lên bên phải nhờ CSS absolute)
+				// item là thẻ <li>, ta append vào cuối thẻ li (ngang hàng với <a> và <ul>)
+				// Tuy nhiên để an toàn, ta insert trước submenu ul
+				const subMenu = item.querySelector('.sub-menu');
+				if (subMenu) {
+					item.insertBefore(arrowSpan, subMenu);
+				}
+
+				// 5. Xử lý sự kiện Click vào mũi tên
+				arrowSpan.addEventListener('click', function (e) {
+					e.preventDefault(); // Ngăn chặn hành vi mặc định
+					e.stopPropagation(); // Ngăn sự kiện nổi bọt
+
+					// Toggle class active cho mũi tên (để xoay)
+					this.classList.toggle('active');
+
+					// Toggle hiện/ẩn menu con kế bên
+					if (subMenu) {
+						if (subMenu.style.display === 'block') {
+							subMenu.style.display = 'none';
+						} else {
+							subMenu.style.display = 'block';
+						}
+					}
+				});
+			});
+		}
+	});
 </script>
 </body>
+
+</html>
+</script>
+</body>
+
 </html>
