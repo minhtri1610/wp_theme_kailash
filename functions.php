@@ -144,19 +144,31 @@ add_action('widgets_init', 'kailash_widgets_init');
  */
 function kailash_scripts()
 {
+    // Enqueue FontAwesome CSS
+    wp_enqueue_style('font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css', array(), '6.5.2');
+
+    // Enqueue Slick Carousel CSS
+    wp_enqueue_style('slick-carousel-css', 'https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css', array(), '1.8.1');
+    wp_enqueue_style('slick-carousel-theme', 'https://cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick-theme.css', array('slick-carousel-css'), '1.8.1');
+
     wp_enqueue_style('kailash-style', get_stylesheet_uri(), array(), _S_VERSION);
     wp_style_add_data('kailash-style', 'rtl', 'replace');
 
     wp_enqueue_style('kailash-tailwind', get_template_directory_uri() . '/style.css', array('kailash-style'), '1.0.6');
 
+    // Enqueue scripts
     wp_enqueue_script('kailash-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true);
     wp_enqueue_script('menu-js', get_template_directory_uri() . '/assets/js/menu.js', [], false, true);
 
+    // Enqueue jQuery and Slick Carousel JS
+    wp_enqueue_script('jquery');
+    wp_enqueue_script('slick-carousel-js', 'https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js', array('jquery'), '1.8.1', true);
+
     wp_enqueue_style(
-        'my-homepage-style', // Tên định danh (handle) duy nhất
-        get_template_directory_uri() . '/assets/css/home.css', // Đường dẫn tới file
-        array(), // Các file CSS phụ thuộc (nếu có)
-        '1.0.6' // Phiên bản (tốt cho cache)
+        'my-homepage-style', // Unique identifier
+        get_template_directory_uri() . '/assets/css/home.css', // Path to the file
+        array(), // Dependencies
+        '1.0.6' // Version
     );
 
     if (is_singular() && comments_open() && get_option('thread_comments')) {
