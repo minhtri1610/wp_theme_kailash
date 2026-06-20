@@ -47,7 +47,7 @@ $social_linkedin = get_field('link_linkedin', $option_id);
 				<ul class="flex flex-row">
 					<?php if($social_facebook): ?>
 					<li class="mr-4">
-						<a href="<?php echo esc_url($social_facebook); ?>" target="_blank" rel="noopener noreferrer" class="block hover:-translate-y-1 transition-transform">
+						<a href="<?php echo esc_url($social_facebook); ?>" target="_blank" class="block hover:-translate-y-1 transition-transform">
 							<i class="fa-brands fa-facebook text-[#dfdfdf] hover:text-white text-3xl"></i>
 						</a>
 					</li>
@@ -55,7 +55,7 @@ $social_linkedin = get_field('link_linkedin', $option_id);
 
 					<?php if($social_linkedin): ?>
 					<li>
-						<a href="<?php echo esc_url($social_linkedin); ?>" target="_blank" rel="noopener noreferrer" class="block hover:-translate-y-1 transition-transform">
+						<a href="<?php echo esc_url($social_linkedin); ?>" target="_blank" class="block hover:-translate-y-1 transition-transform">
 							<i class="fa-brands fa-linkedin text-[#dfdfdf] hover:text-white text-3xl"></i>
 						</a>
 					</li>
@@ -127,6 +127,9 @@ $social_linkedin = get_field('link_linkedin', $option_id);
 </div><!-- #page -->
 
 <?php wp_footer(); ?>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 
 <script type="text/javascript">
     $(document).ready(function(){

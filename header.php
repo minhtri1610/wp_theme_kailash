@@ -22,8 +22,11 @@ $company_phone   = get_field('company_phone', $option_id);
 <head>
 	<meta charset="<?php bloginfo('charset'); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="shortcut icon" href="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/icons/favicon-32x32.png" type="image/x-icon">
+	<link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/assets/images/icons/favicon-32x32.png" type="image/x-icon">
 	<link rel="profile" href="https://gmpg.org/xfn/11">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+	<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick-theme.css"/>
 	<?php wp_head(); ?>
 </head>
 
@@ -35,28 +38,20 @@ $company_phone   = get_field('company_phone', $option_id);
 		<!-- pc nav -->
 		<nav class="bg-white border-b border-gray-200 hidden sm:flex flex-row" id="menu-pc">
 			<div class="logo basis-1/6 flex justify-center items-center">
-				<?php if (is_front_page()) : ?>
-					<h1 class="m-0 flex items-center justify-center">
-						<a href="<?php echo esc_url(home_url('/')); ?>">
-							<img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/logo-crop.png'); ?>" alt="Kailash Lawyer Logo" class="w-[170px] mt-[25px]">
-						</a>
-					</h1>
-				<?php else : ?>
-					<a href="<?php echo esc_url(home_url('/')); ?>">
-						<img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/logo-crop.png'); ?>" alt="Kailash Lawyer Logo" class="w-[170px] mt-[25px]">
-					</a>
-				<?php endif; ?>
+				<a href="<?php echo home_url(); ?>">
+					<img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo-crop.png" alt="" class="w-[170px] mt-[25px]">
+				</a>
 			</div>
 			<div class="menu basis-4/6 flex items-center justify-center flex-col">
 				<!-- language nav -->
 				<section class="mb-3 self-end flex items-center">
 					<span class="mr-3"><i class="fa-solid fa-mobile-screen-button"></i> <?php echo esc_html($company_phone); ?> | </span>
-					<a class="mr-3" href="<?php echo esc_url(home_url('/wp-login.php')); ?>" aria-label="Sign in to Admin Dashboard" title="Login"><i class="fa-solid fa-right-to-bracket"></i></a>
+					<a class="mr-3" href="<?php echo home_url('/wp-login.php'); ?>"><i class="fa-solid fa-right-to-bracket"></i></a>
 					<?php
 						wp_nav_menu(array(
 							'theme_location' => 'lang_menu',
 							'container'      => false,
-							'menu_class'     => 'top-menu flex flex-row content-center justify-center space-x-4', // Use Tailwind to style menu
+							'menu_class'     => 'top-menu flex flex-row content-center justify-center space-x-4', // Dùng Tailwind để style menu
 							'fallback_cb'    => false,
 						));
 						?>
@@ -66,22 +61,20 @@ $company_phone   = get_field('company_phone', $option_id);
 				wp_nav_menu(array(
 					'theme_location' => 'primary_menu',
 					'container'      => false,
-					'menu_class'     => 'top-menu flex flex-row content-center justify-center space-x-4', // Use Tailwind to style menu
+					'menu_class'     => 'top-menu flex flex-row content-center justify-center space-x-4', // Dùng Tailwind để style menu
 					'fallback_cb'    => false,
 				));
 				?>
 			</div>
 			<div class="sub-logo basis-1/6">
-				<img class="w-[170px] float-right" src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/header_arrows.png'); ?>" alt="" aria-hidden="true">
+				<img class="w-[170px] float-right" src="<?php echo get_template_directory_uri(); ?>/assets/images/header_arrows.png" alt="">
 			</div>
 		</nav>
 		
 		<!-- mobile nav -->
 		<nav class="bg-white border-b border-gray-200 sm:hidden flex flex-row" id="mobile-menu">
 			<div class="logo basis-1/2 flex md:justify-center justify-start items-center">
-				<a href="<?php echo esc_url(home_url('/')); ?>">
-					<img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/logo-crop.png'); ?>" alt="Kailash Lawyer Logo" class="sm:w-[170px] w-[120px] mx-2 my-3">
-				</a>
+				<img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo-crop.png" alt="" class="sm:w-[170px] w-[120px] mx-2 my-3">
 			</div>
 			<div class="menu basis-1/2">
 
@@ -91,13 +84,13 @@ $company_phone   = get_field('company_phone', $option_id);
 						wp_nav_menu(array(
 							'theme_location' => 'lang_menu',
 							'container'      => false,
-							'menu_class'     => 'top-menu flex flex-row content-center justify-center space-x-3 text-lg font-bold text-gray-800', // Use Tailwind to style menu
+							'menu_class'     => 'top-menu flex flex-row content-center justify-center space-x-3 text-lg font-bold text-gray-800', // Dùng Tailwind để style menu
 							'fallback_cb'    => false,
 						));
 						?>
 
 
-						<button id="mobile-menu-button" class="p-2 text-gray-700" aria-label="Toggle Mobile Menu">
+						<button id="mobile-menu-button" class="p-2 text-gray-700">
 							<svg id="icon-hamburger" class="h-9 w-9" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
                             </svg>
@@ -117,7 +110,7 @@ $company_phone   = get_field('company_phone', $option_id);
 					'menu_id'        => 'mobile-list-item',
 					'theme_location' => 'primary_menu',
 					'container'      => false,
-					'menu_class'     => 'top-menu flex flex-col sticky flex-row content-center hidden justify-start space-x-4',   // Use Tailwind to style menu
+					'menu_class'     => 'top-menu flex flex-col sticky flex-row content-center hidden justify-start space-x-4',   // Dùng Tailwind để style menu
 					'fallback_cb'    => false,
 				));
 			?>
